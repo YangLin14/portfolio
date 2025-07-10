@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fong-Yu (Yang) Lin | Software Developer</title>
+        <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg" />
+        <link rel="stylesheet" href="style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+        <script
+            src="https://kit.fontawesome.com/your-fontawesome-kit-id.js"
+            crossorigin="anonymous"
+        ></script>
+    </head>
+    <body>
+        <header class="site-header">
+            <section class="container">
+                <a href="#index.html" class="logo">Fong-Yu Lin</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <span class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+            </section>
+        </header>
+
+        <main>
+            <section id="hero" class="hero-section">
+                <section class="container">
+                    <header class="hero-content">
+                        <h1 class="hero-headline">
+                            Software Developer & AI Engineer
+                        </h1>
+                        <p class="hero-subheadline">
+                            Incoming senior at UC San Diego, specializing in
+                            Computer Science. Passionate about building
+                            impactful applications with a focus on AI, cloud
+                            computing, and mobile development.
+                        </p>
+                        <a href="#projects" class="cta-button">View My Work</a>
+                    </header>
+                </section>
+            </section>
+
+            <section id="about" class="about-section">
+                <figure class="container about-container">
+                    <img
+                        src="assets/images/profilepic.png"
+                        alt="Fong-Yu (Yang) Lin"
+                        class="profile-picture"
+                    />
+                    <article class="about-text">
+                        <h2>About Me</h2>
+                        <p>
+                            I moved from Taiwan to the US in 2019 and began my
+                            coding journey at UCSD in 2022. I thrive on solving
+                            complex problems and am currently interning at Swing
+                            Phi LLC, where I apply AI to analyze financial data.
+                            In my free time, I enjoy developing personal
+                            projects, playing badminton, and exploring the
+                            latest in tech.
+                        </p>
+                        <h3>My Tech Stack</h3>
+                        <ul class="tech-stack">
+                            <li>C++</li>
+                            <li>Python</li>
+                            <li>Flutter</li>
+                            <li>Dart</li>
+                            <li>Firebase</li>
+                            <li>AWS</li>
+                            <li>HTML5</li>
+                            <li>CSS3</li>
+                            <li>JavaScript</li>
+                        </ul>
+                    </article>
+                </figure>
+            </section>
+
+            <section id="projects" class="projects-section">
+                <section class="container">
+                    <h2>Featured Projects</h2>
+                    <ul class="projects-grid">
+                        <!-- NewLedger Project -->
+                        <li>
+                            <article class="project-card">
+                                <img
+                                    src="assets/images/NewLedger0.png"
+                                    alt="NewLedger App"
+                                    class="project-image"
+                                    loading="lazy"
+                                />
+                                <section class="project-content">
+                                    <h3>NewLedger - Expense Tracker</h3>
+                                    <p>
+                                        A cross-platform financial management
+                                        app with real-time expense tracking,
+                                        receipt scanning via ML Kit, and
+                                        collaborative expense splitting for
+                                        groups.
+                                    </p>
+                                    <ul class="project-tags">
+                                        <li>Flutter</li>
+                                        <li>Firebase</li>
+                                        <li>ML Kit</li>
+                                        <li>Swift</li>
+                                    </ul>
+                                    <a
+                                        href="projects/newledger.html"
+                                        class="project-link"
+                                        >Learn More &rarr;</a
+                                    >
+                                </section>
+                            </article>
+                        </li>
+                        <!-- Flashy Project -->
+                        <li>
+                            <article class="project-card">
+                                <img
+                                    src="assets/images/flashy.jpeg"
+                                    alt="Flashy AI Flashcards Project"
+                                    class="project-image"
+                                    loading="lazy"
+                                />
+                                <section class="project-content">
+                                    <h3>Flashy - AI Flashcards</h3>
+                                    <p>
+                                        An AI-driven flashcard platform that
+                                        generates up to 12 cards per session to
+                                        promote critical thinking. Features
+                                        secure authentication and unlimited card
+                                        creation.
+                                    </p>
+                                    <ul class="project-tags">
+                                        <li>NextJS</li>
+                                        <li>GroqAI</li>
+                                        <li>Firebase</li>
+                                        <li>Stripe</li>
+                                    </ul>
+                                    <a
+                                        href="https://flashyai.vercel.app/"
+                                        target="_blank"
+                                        class="project-link"
+                                        >View Project &rarr;</a
+                                    >
+                                </section>
+                            </article>
+                        </li>
+                        <!-- ListVaults Project -->
+                        <li>
+                            <article class="project-card">
+                                <img
+                                    src="assets/images/listvault_logo.png"
+                                    alt="ListVaults Project"
+                                    class="project-image"
+                                    loading="lazy"
+                                />
+                                <section class="project-content">
+                                    <h3>ListVaults - Watchlist Tracker</h3>
+                                    <p>
+                                        A comprehensive website for managing and
+                                        tracking various watch lists (e.g.,
+                                        anime, drama) with dedicated "to-watch"
+                                        and "watched" sections to improve
+                                        organization.
+                                    </p>
+                                    <ul class="project-tags">
+                                        <li>NextJS</li>
+                                        <li>JavaScript</li>
+                                        <li>Firebase</li>
+                                    </ul>
+                                    <a
+                                        href="https://listvaults.vercel.app/"
+                                        target="_blank"
+                                        class="project-link"
+                                        >View Project &rarr;</a
+                                    >
+                                </section>
+                            </article>
+                        </li>
+                        <!-- PlanMyTrip Project -->
+                        <li>
+                            <article class="project-card">
+                                <img
+                                    src="assets/images/planmytrip_logo.png"
+                                    alt="PlanMyTrip Project"
+                                    class="project-image"
+                                    loading="lazy"
+                                />
+                                <section class="project-content">
+                                    <h3>PlanMyTrip - AI Chatbot</h3>
+                                    <p>
+                                        An AI-powered platform to simplify
+                                        travel planning with tailored
+                                        recommendations, personalized
+                                        itineraries, packing checklists, and
+                                        essential travel tips.
+                                    </p>
+                                    <ul class="project-tags">
+                                        <li>ReactJS</li>
+                                        <li>NextJS</li>
+                                        <li>Groq AI</li>
+                                    </ul>
+                                    <a
+                                        href="https://plan-my-trip-ai.vercel.app/"
+                                        target="_blank"
+                                        class="project-link"
+                                        >View Project &rarr;</a
+                                    >
+                                </section>
+                            </article>
+                        </li>
+                        <!-- Arduino Car Project -->
+                        <li>
+                            <article class="project-card">
+                                <img
+                                    src="assets/images/car2.webp"
+                                    alt="Arduino Car Project"
+                                    class="project-image"
+                                    loading="lazy"
+                                />
+                                <section class="project-content">
+                                    <h3>Joystick Controlled Car</h3>
+                                    <p>
+                                        A 3D-printed, Arduino-powered race car
+                                        controlled via a joystick. Led a team in
+                                        design, 3D printing, wiring, soldering,
+                                        and programming.
+                                    </p>
+                                    <ul class="project-tags">
+                                        <li>Arduino</li>
+                                        <li>C</li>
+                                        <li>Hardware</li>
+                                        <li>3D Printing</li>
+                                    </ul>
+                                    <a href="#" class="project-link"
+                                        >Learn More &rarr;</a
+                                    >
+                                </section>
+                            </article>
+                        </li>
+                        <!-- Personal Website Project -->
+                        <li>
+                            <article class="project-card">
+                                <img
+                                    src="assets/images/logo.jpeg"
+                                    alt="Personal Website Project"
+                                    class="project-image"
+                                    loading="lazy"
+                                />
+                                <section class="project-content">
+                                    <h3>Personal Landing Page</h3>
+                                    <p>
+                                        Created a personal landing page to
+                                        catalog all of my projects and
+                                        professional experiences, hosted on
+                                        GitHub Pages.
+                                    </p>
+                                    <ul class="project-tags">
+                                        <li>HTML</li>
+                                        <li>CSS</li>
+                                        <li>DNS</li>
+                                    </ul>
+                                    <a
+                                        href="https://yanglin14.github.io/personal-website/"
+                                        target="_blank"
+                                        class="project-link"
+                                        >View Project &rarr;</a
+                                    >
+                                </section>
+                            </article>
+                        </li>
+                        <!-- Order Simulator Project -->
+                        <li>
+                            <article class="project-card">
+                                <img
+                                    src="assets/images/frugalpic03.webp"
+                                    alt="OrderEase Project"
+                                    class="project-image"
+                                    loading="lazy"
+                                />
+                                <section class="project-content">
+                                    <h3>Order Simulator Mobile App</h3>
+                                    <p>
+                                        Developed an app that allows users to
+                                        order food from a restaurant menu and
+                                        track the order status and then generate
+                                        corresponding ordering sentences.
+                                    </p>
+                                    <ul class="project-tags">
+                                        <li>Flutter</li>
+                                        <li>Figma</li>
+                                        <li>Firebase</li>
+                                        <li>Dart</li>
+                                    </ul>
+                                    <a href="#" class="project-link"
+                                        >Learn More &rarr;</a
+                                    >
+                                </section>
+                            </article>
+                        </li>
+                        <!-- Movable Hand Project -->
+                        <li>
+                            <article class="project-card">
+                                <img
+                                    src="assets/images/hand0.webp"
+                                    alt="Movable Hand Project"
+                                    class="project-image"
+                                    loading="lazy"
+                                />
+                                <section class="project-content">
+                                    <h3>Movable Hand</h3>
+                                    <p>
+                                        Created a hand that is designed to move
+                                        in like a real human hand and help
+                                        grabbing small things like phones,
+                                        rings, or car keys.
+                                    </p>
+                                    <ul class="project-tags">
+                                        <li>Fusion360</li>
+                                        <li>3D Printing</li>
+                                    </ul>
+                                    <a href="#" class="project-link"
+                                        >Learn More &rarr;</a
+                                    >
+                                </section>
+                            </article>
+                        </li>
+                        <!-- Rube-Goldberg Machine Project -->
+                        <li>
+                            <article class="project-card">
+                                <img
+                                    src="assets/images/rube2.webp"
+                                    alt="Rube-Goldberg Machine Project"
+                                    class="project-image"
+                                    loading="lazy"
+                                />
+                                <section class="project-content">
+                                    <h3>Rube-Goldberg Machine</h3>
+                                    <p>
+                                        Designed 6 versions of a Rube-Goldberg
+                                        machine using different sensors and
+                                        microcontrollers, with a final design
+                                        requiring only a single push-button
+                                        interface.
+                                    </p>
+                                    <ul class="project-tags">
+                                        <li>Arduino</li>
+                                        <li>Hardware Design</li>
+                                    </ul>
+                                    <a href="#" class="project-link"
+                                        >Learn More &rarr;</a
+                                    >
+                                </section>
+                            </article>
+                        </li>
+                    </ul>
+                </section>
+            </section>
+
+            <section id="experience" class="experience-section">
+                <section class="container">
+                    <h2>Professional Experience</h2>
+                    <ol class="timeline">
+                        <li class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <p class="timeline-date">June 2025 - Present</p>
+                            <article class="timeline-content">
+                                <h3>Software Engineer Intern</h3>
+                                <p class="timeline-company">Ubitus</p>
+                                <p>
+                                    Developing MCP tools for LLMs that utilize
+                                    vector databases like Milvus with L2
+                                    distance metrics for relevant data retrieval
+                                    and implemented reranking techniques to
+                                    improve data precision for database
+                                    searching applications.
+                                </p>
+                            </article>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <p class="timeline-date">
+                                September 2024 - May 2025
+                            </p>
+                            <article class="timeline-content">
+                                <h3>Computer Vision Research</h3>
+                                <p class="timeline-company">
+                                    University of California San Diego, Early
+                                    Research Scholars Program
+                                </p>
+                                <p>
+                                    Contributed to advancing 3D scene
+                                    understanding and synthesis research at UCSD
+                                    by integrating large language models with
+                                    tool like Blender to optimize lighting
+                                    placement. Develop domain-specific languages
+                                    for scene rendering, and create automated
+                                    pipelines for spatial reasoning and scene
+                                    evaluation tasks.
+                                </p>
+                            </article>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <p class="timeline-date">January 2025 - May 2025</p>
+                            <article class="timeline-content">
+                                <h3>Software Engineering Intern (AI Team)</h3>
+                                <p class="timeline-company">Swing Phi LLC</p>
+                                <p>
+                                    Developed AI-powered tools for political
+                                    trading analysis and monitoring
+                                    congressional financial disclosures.
+                                </p>
+                            </article>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <p class="timeline-date">
+                                July 2024 - September 2024
+                            </p>
+                            <article class="timeline-content">
+                                <h3>Software Engineering Fellow</h3>
+                                <p class="timeline-company">Headstarter</p>
+                                <p>
+                                    Completed a 7-week intensive fellowship
+                                    focused on machine learning, AI, and
+                                    software engineering principles.
+                                </p>
+                            </article>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <p class="timeline-date">
+                                July 2024 - September 2024
+                            </p>
+                            <article class="timeline-content">
+                                <h3>Robotics Instructor</h3>
+                                <p class="timeline-company">
+                                    Magikid Robotics Lab
+                                </p>
+                                <p>
+                                    Guided robotics students through robot
+                                    assembly, coding with Scratch, 3D modeling
+                                    and printing with TinkerCAD, and introducing
+                                    them to AI technologies like ChatGPT and AI
+                                    image generators to provide comprehensive
+                                    hands-on STEM education.
+                                </p>
+                            </article>
+                        </li>
+                        <li class="timeline-item">
+                            <span class="timeline-dot"></span>
+                            <p class="timeline-date">June 2023 - August 2023</p>
+                            <article class="timeline-content">
+                                <h3>Software Developer Intern</h3>
+                                <p class="timeline-company">
+                                    Frugal Innovation Hub.
+                                </p>
+                                <p>
+                                    Built a mobile food ordering simulator app
+                                    using Flutter to enhance user interface
+                                    design and order management skills.
+                                </p>
+                            </article>
+                        </li>
+                    </ol>
+                </section>
+            </section>
+
+            <section id="contact" class="contact-section">
+                <section class="container">
+                    <h2>Get In Touch</h2>
+                    <p>
+                        I'm currently seeking new opportunities. Feel free to
+                        reach out!
+                    </p>
+                    <a href="mailto:fongyu903@gmail.com" class="cta-button"
+                        >Say Hello</a
+                    >
+                    <ul class="social-links">
+                        <li>
+                            <a
+                                href="https://www.linkedin.com/in/yang-12a4c/"
+                                target="_blank"
+                                title="LinkedIn"
+                                >LinkedIn</a
+                            >
+                        </li>
+                        <li>
+                            <a
+                                href="https://github.com/YangLin14"
+                                target="_blank"
+                                title="GitHub"
+                                >GitHub</a
+                            >
+                        </li>
+                    </ul>
+                </section>
+            </section>
+        </main>
+
+        <footer class="site-footer">
+            <section class="container footer-container">
+                <p>
+                    &copy; <span id="year"></span> Fong-Yu (Yang) Lin. All
+                    Rights Reserved.
+                </p>
+                <p id="location-time">YuYu Inc.</p>
+            </section>
+        </footer>
+        <script src="script.js" defer></script>
+    </body>
+</html>

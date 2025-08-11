@@ -6,12 +6,16 @@ const currentTheme = localStorage.getItem("theme");
 
 // On page load, check for a saved theme in localStorage
 if (currentTheme) {
+    // If a theme is saved, apply it
     document.documentElement.setAttribute("data-theme", currentTheme);
 
-    // If the saved theme is light, check the toggle switch
+    // If the saved theme is light, make sure the toggle switch is checked
     if (currentTheme === "light") {
         toggleSwitch.checked = true;
     }
+} else {
+    // If no theme is saved (new visitor), default to dark mode
+    document.documentElement.setAttribute("data-theme", "dark");
 }
 
 // Function to switch the theme

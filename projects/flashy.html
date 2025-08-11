@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Flashy Project | Fong-Yu (Yang) Lin</title>
+        <link rel="icon" type="image/jpeg" href="../assets/images/logo.jpeg" />
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="site-header">
+            <section class="container">
+                <a href="../index.html" class="logo">Fong-Yu Lin</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li>
+                            <a href="../index.html#experience">Experience</a>
+                        </li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <span class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+            </section>
+        </header>
+
+        <main>
+            <header class="project-hero">
+                <section class="container">
+                    <h1>Flashy 🤖</h1>
+                    <p>
+                        An AI-driven platform that generates high-quality,
+                        interactive flashcards to promote critical thinking and
+                        enhance learning.
+                    </p>
+                </section>
+            </header>
+
+            <article class="project-page-content">
+                <section class="container">
+                    <section class="project-section">
+                        <h2>Project Summary 📝</h2>
+                        <p>
+                            Flashy is an innovative platform where you can
+                            create high-quality flashcards with ease—either
+                            manually or with the assistance of AI. The AI
+                            generates up to 12 thought-provoking questions and
+                            detailed answers at a time, creating an interactive
+                            learning experience that promotes critical thinking.
+                            With secure authentication via Clerk, users can
+                            save, edit, and organize an unlimited number of
+                            flashcards, all stored safely in Firebase.
+                            <br /><br />
+                            <strong
+                                ><a
+                                    href="https://flashyai.vercel.app/"
+                                    target="_blank"
+                                    >View the live project here &rarr;</a
+                                ></strong
+                            >
+                        </p>
+                    </section>
+
+                    <section class="project-section">
+                        <h2>Features ✨</h2>
+                        <section class="features-grid">
+                            <article>
+                                <h3>Core Functionality ⚙️</h3>
+                                <ul>
+                                    <li>🤖 AI-powered flashcard generation</li>
+                                    <li>
+                                        🔐 Secure user authentication via Clerk
+                                    </li>
+                                    <li>
+                                        💾 Unlimited creation, editing, and
+                                        organization
+                                    </li>
+                                    <li>
+                                        🔥 Real-time data persistence with
+                                        Firebase
+                                    </li>
+                                    <li>
+                                        💳 Stripe integration for premium
+                                        features
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>User Experience 🎨</h3>
+                                <ul>
+                                    <li>✨ Simple and intuitive interface</li>
+                                    <li>
+                                        🧠 Promotes critical thinking and
+                                        retention
+                                    </li>
+                                    <li>📱 Fully responsive for all devices</li>
+                                    <li>
+                                        ⚡️ Fast content generation with GroqAI
+                                    </li>
+                                    <li>🌐 Deployed globally via Vercel</li>
+                                </ul>
+                            </article>
+                        </section>
+                    </section>
+
+                    <section class="project-section">
+                        <h2>Technology Stack 💻</h2>
+                        <ul class="tech-stack">
+                            <li>NextJS</li>
+                            <li>GroqAI</li>
+                            <li>Firebase</li>
+                            <li>Clerk</li>
+                            <li>Stripe</li>
+                            <li>Vercel</li>
+                        </ul>
+                    </section>
+
+                    <a href="../index.html#projects" class="back-link"
+                        >&larr; Back to All Projects</a
+                    >
+                </section>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <section class="container footer-container">
+                <p>
+                    &copy; <span id="year"></span> Fong-Yu (Yang) Lin. All
+                    Rights Reserved.
+                </p>
+                <p id="location-time"></p>
+            </section>
+        </footer>
+
+        <script src="../script.js" defer></script>
+    </body>
+</html>

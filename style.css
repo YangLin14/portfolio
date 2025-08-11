@@ -48,6 +48,10 @@ body {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+main {
+    padding-top: 80px;
+}
+
 .container {
     width: 100%;
     max-width: 1100px;
@@ -216,16 +220,16 @@ input:checked + .slider:before {
 /* Hero Section */
 /* ------------------- */
 .hero-section {
-    padding-top: 10rem;
-    text-align: center;
-    min-height: 80vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    align-items: center; /* Vertically centers the content */
+    justify-content: center; /* Horizontally centers the content */
+    min-height: 80vh;
+    text-align: center; /* Aligns the text itself to the center */
 }
 
 .hero-content {
-    max-width: 800px;
+    max-width: 900px;
+    padding: 0 1rem;
 }
 
 .hero-headline {
@@ -286,6 +290,7 @@ input:checked + .slider:before {
     flex-wrap: wrap;
     gap: 0.75rem;
     margin-top: 1.5rem;
+    justify-content: center;
 }
 
 .tech-stack span {
@@ -579,6 +584,10 @@ main .project-section p {
     line-height: 1.7;
 }
 
+.project-section {
+    padding: 4rem 0;
+}
+
 .features-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -653,6 +662,16 @@ main .project-section p {
     border: 1px solid var(--border-color);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+.gallery-grid.gallery-grid-landscape figure {
+    flex: 0 0 auto;
+    width: 380px;
+    height: 285px;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 16px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
 .gallery-grid figure:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -669,6 +688,20 @@ main .project-section p {
     font-weight: 500;
 }
 
+.video-showcase-wrapper {
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.video-showcase-wrapper video {
+    width: 100%;
+    max-width: 900px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
 /* ------------------- */
 /* Responsive Design */
 /* ------------------- */
@@ -681,6 +714,10 @@ main .project-section p {
         flex-direction: column;
         gap: 1rem;
         position: static; /* Reset positioning for mobile */
+    }
+
+    main {
+        padding-top: 160px;
     }
 
     /* Reset navigation centering for mobile */

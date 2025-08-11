@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>ListVaults Project | Fong-Yu (Yang) Lin</title>
+        <link rel="icon" type="image/jpeg" href="../assets/images/logo.jpeg" />
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="site-header">
+            <section class="container">
+                <a href="../index.html" class="logo">Fong-Yu Lin</a>
+                <nav class="main-nav">
+                    <ul>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li>
+                            <a href="../index.html#experience">Experience</a>
+                        </li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <span class="theme-switch-wrapper">
+                    <label class="theme-switch" for="checkbox">
+                        <input type="checkbox" id="checkbox" />
+                        <span class="slider round"></span>
+                    </label>
+                </span>
+            </section>
+        </header>
+
+        <main>
+            <header class="project-hero">
+                <section class="container">
+                    <h1>ListVaults 🎬</h1>
+                    <p>
+                        The ultimate tool for organizing and tracking your video
+                        library, from movies and TV shows to web series.
+                    </p>
+                </section>
+            </header>
+
+            <article class="project-page-content">
+                <section class="container">
+                    <section class="project-section">
+                        <h2>Project Summary 📝</h2>
+                        <p>
+                            ListVaults is a tool for organizing and tracking
+                            your video library. It allows you to create
+                            personalized lists with details like genre,
+                            episodes, priority, and notes. Each list is divided
+                            into "To-Watch" and "Watched" sections, making it
+                            easy to manage your viewing queue. With secure cloud
+                            storage powered by Firebase, your lists are always
+                            safe and accessible.
+                            <br /><br />
+                            <strong
+                                ><a
+                                    href="https://listvaults.vercel.app/"
+                                    target="_blank"
+                                    >View the live project here &rarr;</a
+                                ></strong
+                            >
+                        </p>
+                    </section>
+
+                    <section class="project-section">
+                        <h2>Features ✨</h2>
+                        <section class="features-grid">
+                            <article>
+                                <h3>Core Functionality ⚙️</h3>
+                                <ul>
+                                    <li>
+                                        📝 Create personalized lists for any
+                                        video type.
+                                    </li>
+                                    <li>
+                                        ✅ Separate "To-Watch" and "Watched"
+                                        sections.
+                                    </li>
+                                    <li>
+                                        ➕ Add custom details: genre, episodes,
+                                        and priority.
+                                    </li>
+                                    <li>
+                                        ☁️ Secure cloud storage via Firebase.
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>User Experience 🎨</h3>
+                                <ul>
+                                    <li>🚀 Simple sign-up process.</li>
+                                    <li>↔️ Easily move items between lists.</li>
+                                    <li>
+                                        ✏️ Fully editable entries at any time.
+                                    </li>
+                                    <li>
+                                        ✨ Clean interface for efficient
+                                        management.
+                                    </li>
+                                </ul>
+                            </article>
+                        </section>
+                    </section>
+
+                    <section class="project-section">
+                        <h2>App Showcase 🎥</h2>
+                        <div class="video-showcase-wrapper">
+                            <video controls>
+                                <source
+                                    src="../assets/videos/listvaults_video.mp4"
+                                    type="video/mp4"
+                                />
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </section>
+
+                    <section class="project-section">
+                        <h2>Technology Stack 💻</h2>
+                        <ul class="tech-stack">
+                            <li>NextJS</li>
+                            <li>JavaScript</li>
+                            <li>Firebase</li>
+                            <li>Vercel</li>
+                        </ul>
+                    </section>
+
+                    <a href="../index.html#projects" class="back-link"
+                        >&larr; Back to All Projects</a
+                    >
+                </section>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <section class="container footer-container">
+                <p>
+                    &copy; <span id="year"></span> Fong-Yu (Yang) Lin. All
+                    Rights Reserved.
+                </p>
+                <p id="location-time"></p>
+            </section>
+        </footer>
+
+        <script src="../script.js" defer></script>
+    </body>
+</html>

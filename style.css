@@ -433,6 +433,12 @@ input:checked + .slider:before {
     margin-bottom: 0.5rem;
 }
 
+.timeline-link {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-weight: 500;
+}
+
 /* ------------------- */
 /* Contact Section */
 /* ------------------- */
@@ -702,6 +708,215 @@ main .project-section p {
     border: 1px solid var(--border-color);
 }
 
+/* Showcase grid for two items */
+.showcase-grid-two {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.showcase-grid-two img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+}
+
+/* Style for the single showcase poster */
+.showcase-poster {
+    margin: 1.5rem 0;
+    text-align: center;
+}
+
+.showcase-poster img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------- */
+/* Experience Page     */
+/* ------------------- */
+.experience-hero {
+    padding: 6rem 0 4rem 0;
+    text-align: center;
+    background-color: var(--bg-medium);
+}
+
+.experience-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.experience-hero .experience-dates {
+    font-weight: 500;
+    color: var(--accent-color);
+    margin-bottom: 1rem;
+    display: block;
+}
+
+.experience-hero .experience-company {
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+}
+
+.experience-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+@media (min-width: 992px) {
+    .experience-layout {
+        grid-template-columns: 220px 1fr;
+    }
+}
+
+.experience-sidebar nav {
+    position: sticky;
+    top: 120px; /* Adjust based on header height */
+}
+
+.experience-sidebar p {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+}
+
+.experience-sidebar ul {
+    list-style: none;
+}
+
+.experience-sidebar li a {
+    display: block;
+    padding: 0.5rem 0;
+    font-weight: 500;
+    color: var(--text-secondary);
+    border-left: 2px solid var(--border-color);
+    padding-left: 1rem;
+    transition: all 0.2s ease;
+}
+
+.experience-sidebar li a:hover {
+    color: var(--text-primary);
+    border-left-color: var(--accent-color);
+}
+
+.experience-content .experience-overview {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 2rem;
+    margin-bottom: 2rem;
+}
+
+.experience-content section {
+    padding-bottom: 3rem;
+}
+
+.experience-content h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.experience-content h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.experience-content ul {
+    list-style-position: outside;
+    padding-left: 1.5rem;
+}
+
+.experience-content ul li {
+    margin-bottom: 0.5rem;
+}
+
+.case-study-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.case-study-card {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    padding: 1rem;
+    border-radius: 12px;
+}
+
+.case-study-card img {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+.case-study-card h4 {
+    margin-bottom: 0.5rem;
+}
+
+.case-study-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+}
+
+/* Student project showcase grid */
+.student-project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.student-project-card {
+    background-color: var(--bg-dark);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+    color: var(--text-primary);
+}
+
+.student-project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.student-project-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.student-project-card-content {
+    padding: 1rem 1.25rem;
+}
+
+.student-project-card-content h4 {
+    margin-bottom: 0.5rem;
+}
+
+.student-project-card-content p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0;
+    line-height: 1.5;
+}
+
 /* ------------------- */
 /* Responsive Design */
 /* ------------------- */
@@ -750,6 +965,10 @@ main .project-section p {
     .footer-container {
         flex-direction: column;
         gap: 0.5rem;
+    }
+
+    .showcase-grid-two {
+        grid-template-columns: 1fr 1fr;
     }
 }
 

@@ -278,10 +278,71 @@ input:checked + .slider:before {
 /* ------------------- */
 .hero-section {
     display: flex;
-    align-items: center; /* Vertically centers the content */
-    justify-content: center; /* Horizontally centers the content */
+    align-items: center;
+    justify-content: center;
     min-height: 80vh;
-    text-align: center; /* Aligns the text itself to the center */
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+
+    /* Galaxy gradient background */
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 40%, #0f172a 100%);
+    color: #e2e8f0;
+}
+
+/* Subtle star field */
+.hero-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="2" cy="2" r="1" fill="white" opacity="0.8"/><circle cx="30" cy="40" r="1.2" fill="white" opacity="0.6"/><circle cx="70" cy="80" r="1.5" fill="white" opacity="0.7"/><circle cx="90" cy="20" r="1" fill="white" opacity="0.9"/></svg>');
+    background-size: 150px 150px;
+    animation: star-drift 60s linear infinite;
+    z-index: 0;
+}
+
+/* Floating nebula effect (soft glow) */
+.hero-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+            circle at 30% 30%,
+            rgba(255, 0, 150, 0.2),
+            transparent 70%
+        ),
+        radial-gradient(
+            circle at 70% 70%,
+            rgba(0, 200, 255, 0.2),
+            transparent 70%
+        );
+    animation: nebula-shift 40s ease-in-out infinite alternate;
+    z-index: 0;
+}
+
+/* Text on top of stars */
+.hero-section > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* Animations */
+@keyframes star-drift {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-200px);
+    }
+}
+
+@keyframes nebula-shift {
+    from {
+        transform: scale(1) translate(0, 0);
+    }
+    to {
+        transform: scale(1.2) translate(-20px, -10px);
+    }
 }
 
 .hero-content {
@@ -301,19 +362,32 @@ input:checked + .slider:before {
 }
 
 .cta-button {
-    background-color: var(--accent-color);
+    background: linear-gradient(
+        135deg,
+        var(--accent-color),
+        var(--accent-hover)
+    );
     color: var(--cta-text-color);
-    padding: 0.8rem 2rem;
-    border-radius: 8px;
+    padding: 0.9rem 2.2rem;
+    border-radius: 12px;
     font-weight: 700;
     font-size: 1rem;
     display: inline-block;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    letter-spacing: 0.5px;
+    cursor: pointer;
 }
 
 .cta-button:hover {
-    background-color: var(--accent-hover);
-    transform: translateY(-2px);
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    filter: brightness(1.05);
+}
+
+.cta-button:active {
+    transform: translateY(-1px) scale(0.98);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) inset;
 }
 
 /* ------------------- */
@@ -711,13 +785,51 @@ input:checked + .slider:before {
 .project-hero h1 {
     font-size: 3.5rem;
     margin-bottom: 0.5rem;
+    color: #1a202c;
+    text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
 }
+
 .project-hero p {
     font-size: 1.25rem;
     max-width: 800px;
     margin: 0 auto;
-    color: var(--text-secondary);
+    color: #4a5568;
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
 }
+
+.project-hero {
+    background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    color: #2d3748;
+    padding: 4rem 0 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.project-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="25,15 35,35 15,35" fill="rgba(45,55,72,0.1)"/><rect x="70" y="20" width="8" height="8" fill="rgba(45,55,72,0.08)"/><circle cx="60" cy="70" r="3" fill="rgba(45,55,72,0.12)"/></svg>');
+    animation: drift 25s ease-in-out infinite;
+}
+
+@keyframes drift {
+    0%,
+    100% {
+        transform: translateX(0) translateY(0) rotate(0deg);
+    }
+    33% {
+        transform: translateX(10px) translateY(-5px) rotate(1deg);
+    }
+    66% {
+        transform: translateX(-5px) translateY(8px) rotate(-1deg);
+    }
+}
+
 .project-page-content {
     padding: 1rem 0;
 }

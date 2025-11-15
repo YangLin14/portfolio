@@ -980,18 +980,17 @@ main .project-section p {
 }
 
 /* Showcase grid for two items */
-.showcase-grid {
+.showcase-grid-two {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: 1fr;
     gap: 1.5rem;
     margin-top: 1.5rem;
 }
 
-.showcase-grid img {
+.showcase-grid-two img {
     width: 100%;
     border-radius: 12px;
     border: 1px solid var(--border-color);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 /* Style for the single showcase poster */
@@ -1619,6 +1618,9 @@ code {
         gap: 0.5rem;
     }
 
+    .showcase-grid-two {
+        grid-template-columns: 1fr 1fr;
+    }
     .project-tags {
         gap: 0.5rem;
         margin: 1rem 0;

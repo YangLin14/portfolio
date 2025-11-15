@@ -1264,6 +1264,7 @@ main .project-section p {
 
 /* Section Styling */
 .experience-content section {
+    padding-top: 3rem;
     margin-bottom: 3rem;
     padding-bottom: 2rem;
     border-bottom: 1px solid var(--border-light, #f0f0f0);
@@ -1567,6 +1568,14 @@ code {
     line-height: 1.5;
     background: var(--card-background, #ffffff);
     border-top: 1px solid var(--border-light, #e0e0e0);
+}
+
+.project-details-link {
+    margin-top: 1.5rem;
+}
+
+.button-wrapper {
+    text-align: center;
 }
 
 /* ------------------- */

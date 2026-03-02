@@ -3,8 +3,18 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Fong-Yu (Yang) Lin — Software Developer & AI Engineer. UCSD Computer Science student building impactful applications in AI, robotics, and mobile development."
+        />
+        <meta property="og:title" content="Fong-Yu (Yang) Lin | Software Developer" />
+        <meta
+            property="og:description"
+            content="Software Developer & AI Engineer specializing in AI applications, robotics, and mobile development."
+        />
+        <meta property="og:type" content="website" />
         <title>Fong-Yu (Yang) Lin | Software Developer</title>
-        <link rel="icon" type="image/jpeg" href="assets/images/logo.jpeg" />
+        <link rel="icon" type="image/jpeg" href="assets/images/general/logo.jpeg" />
         <link rel="stylesheet" href="style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,16 +22,13 @@
             href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
             rel="stylesheet"
         />
-        <script
-            src="https://kit.fontawesome.com/your-fontawesome-kit-id.js"
-            crossorigin="anonymous"
-        ></script>
     </head>
     <body>
+        <a href="#main-content" class="skip-to-content">Skip to main content</a>
         <header class="site-header">
             <section class="container">
-                <a href="#index.html" class="logo">Fong-Yu Lin</a>
-                <nav class="main-nav">
+                <a href="#" class="logo">Fong-Yu Lin</a>
+                <nav class="main-nav" aria-label="Main navigation">
                     <ul>
                         <li><a href="#about">About</a></li>
                         <li><a href="#projects">Projects</a></li>
@@ -29,12 +36,7 @@
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </nav>
-                <!-- <span class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <span class="slider round"></span>
-                    </label>
-                </span> -->
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode">☀️</button>
             </section>
         </header>
 
@@ -57,7 +59,7 @@
             <section id="about" class="about-section">
                 <figure class="container about-container">
                     <img
-                        src="assets/images/profilepic.png"
+                        src="assets/images/general/profilepic.png"
                         alt="Fong-Yu (Yang) Lin"
                         class="profile-picture"
                     />
@@ -78,6 +80,7 @@
                         <ul class="tech-stack">
                             <li>C++</li>
                             <li>Python</li>
+                            <li>React</li>
                             <li>Flutter</li>
                             <li>Dart</li>
                             <li>Firebase</li>
@@ -98,7 +101,7 @@
                         <li>
                             <article class="project-card">
                                 <img
-                                    src="assets/images/NewLedger0.png"
+                                    src="assets/images/projects/newledger/NewLedger0.png"
                                     alt="NewLedger App"
                                     class="project-image"
                                     loading="lazy"
@@ -128,11 +131,45 @@
                                 </section>
                             </article>
                         </li>
+                        <!-- Love Ability Gym Project -->
+                        <li>
+                            <article class="project-card">
+                                <img
+                                    src="assets/images/projects/love-ability-gym/love_ability_gym.png"
+                                    alt="Love Ability Gym App"
+                                    class="project-image"
+                                    loading="lazy"
+                                />
+                                <section class="project-content">
+                                    <h3>Love Ability Gym</h3>
+                                    <p>
+                                        A mobile-first emotional intelligence
+                                        training app with 5 core modules,
+                                        bilingual support, offline-first
+                                        IndexedDB storage, and optional cloud
+                                        sync via Supabase.
+                                    </p>
+                                    <ul class="project-tags">
+                                        <li class="framework featured">
+                                            React
+                                        </li>
+                                        <li class="tool">Vite</li>
+                                        <li class="database">Supabase</li>
+                                        <li class="tech">PWA</li>
+                                    </ul>
+                                    <a
+                                        href="projects/love-ability-gym.html"
+                                        class="project-link"
+                                        >Learn More &rarr;</a
+                                    >
+                                </section>
+                            </article>
+                        </li>
                         <!-- Flashy Project -->
                         <li>
                             <article class="project-card">
                                 <img
-                                    src="assets/images/flashy.jpeg"
+                                    src="assets/images/projects/flashy/flashy.jpeg"
                                     alt="Flashy AI Flashcards Project"
                                     class="project-image"
                                     loading="lazy"
@@ -164,7 +201,7 @@
                         <li>
                             <article class="project-card">
                                 <img
-                                    src="assets/images/listvault_logo.png"
+                                    src="assets/images/projects/listvaults/listvault_logo.png"
                                     alt="ListVaults Project"
                                     class="project-image"
                                     loading="lazy"
@@ -195,7 +232,7 @@
                         <li>
                             <article class="project-card">
                                 <img
-                                    src="assets/images/planmytrip_logo.png"
+                                    src="assets/images/projects/planmytrip/planmytrip_logo.png"
                                     alt="PlanMyTrip Project"
                                     class="project-image"
                                     loading="lazy"
@@ -226,7 +263,7 @@
                         <li>
                             <article class="project-card">
                                 <img
-                                    src="assets/images/car2.webp"
+                                    src="assets/images/projects/joystickcar/car2.webp"
                                     alt="Arduino Car Project"
                                     class="project-image"
                                     loading="lazy"
@@ -257,7 +294,7 @@
                         <li>
                             <article class="project-card">
                                 <img
-                                    src="assets/images/logo.jpeg"
+                                    src="assets/images/general/logo.jpeg"
                                     alt="Personal Website Project"
                                     class="project-image"
                                     loading="lazy"
@@ -286,7 +323,7 @@
                         <li>
                             <article class="project-card">
                                 <img
-                                    src="assets/images/frugalpic03.webp"
+                                    src="assets/images/experience/frugal-hub/frugalpic03.webp"
                                     alt="OrderEase Project"
                                     class="project-image"
                                     loading="lazy"
@@ -319,7 +356,7 @@
                         <li>
                             <article class="project-card">
                                 <img
-                                    src="assets/images/hand0.webp"
+                                    src="assets/images/projects/movable-hand/hand0.webp"
                                     alt="Movable Hand Project"
                                     class="project-image"
                                     loading="lazy"
@@ -348,7 +385,7 @@
                         <li>
                             <article class="project-card">
                                 <img
-                                    src="assets/images/rube2.webp"
+                                    src="assets/images/projects/rube-goldberg/rube2.webp"
                                     alt="Rube-Goldberg Machine Project"
                                     class="project-image"
                                     loading="lazy"
@@ -533,6 +570,7 @@
                             <a
                                 href="https://www.linkedin.com/in/yang-12a4c/"
                                 target="_blank"
+                                rel="noopener noreferrer"
                                 title="LinkedIn"
                                 >LinkedIn</a
                             >
@@ -541,6 +579,7 @@
                             <a
                                 href="https://github.com/YangLin14"
                                 target="_blank"
+                                rel="noopener noreferrer"
                                 title="GitHub"
                                 >GitHub</a
                             >
@@ -556,7 +595,7 @@
                     &copy; <span id="year"></span> Fong-Yu (Yang) Lin. All
                     Rights Reserved.
                 </p>
-                <p id="location-time">YuYu Inc.</p>
+                <p id="location-time"></p>
             </section>
         </footer>
         <script src="script.js" defer></script>

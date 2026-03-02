@@ -6,6 +6,23 @@
         Roboto, Helvetica, Arial, sans-serif;
 }
 
+/* Skip to content (a11y) */
+.skip-to-content {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 9999;
+    background: var(--accent-color);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 0 0 8px 0;
+    font-weight: 600;
+    text-decoration: none;
+}
+.skip-to-content:focus {
+    left: 0;
+}
+
 /* Dark Theme (Default) */
 [data-theme="dark"] {
     --bg-dark: #0d1117;
@@ -157,9 +174,8 @@ ol {
     padding: 0;
 }
 
-.slider.round,
 .timeline-dot {
-    display: inline-block; /* Or 'block' depending on your layout */
+    display: inline-block;
 }
 
 /* ------------------- */
@@ -210,68 +226,40 @@ ol {
 .main-nav a {
     font-weight: 500;
     color: var(--text-secondary);
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.main-nav a::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent-color), var(--accent-hover));
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease;
+    border-radius: 1px;
 }
 
 .main-nav a:hover {
     color: var(--text-primary);
 }
 
-/* ------------------- */
-/* Theme Switcher */
-/* ------------------- */
-.theme-switch-wrapper {
-    display: flex;
-    align-items: center;
+.main-nav a:hover::after,
+.main-nav a.active::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
-.theme-switch {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 26px;
+.main-nav a.active {
+    color: var(--accent-color);
+    font-weight: 600;
 }
 
-.theme-switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
 
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 26px;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 3px;
-    bottom: 3px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider {
-    background-color: var(--accent-color);
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px var(--accent-color);
-}
-
-input:checked + .slider:before {
-    transform: translateX(24px);
-}
 
 /* ------------------- */
 /* Hero Section */
@@ -353,12 +341,14 @@ input:checked + .slider:before {
 .hero-headline {
     font-size: 3.5rem;
     font-weight: 700;
+    color: #ffffff !important;
 }
 
 .hero-subheadline {
     font-size: 1.25rem;
     max-width: 650px;
     margin: 1.5rem auto 2.5rem;
+    color: #e2e8f0 !important;
 }
 
 .cta-button {
@@ -374,20 +364,30 @@ input:checked + .slider:before {
     font-size: 1rem;
     display: inline-block;
     transition: all 0.3s ease;
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(88, 166, 255, 0.15);
     letter-spacing: 0.5px;
     cursor: pointer;
+    animation: cta-glow 3s ease-in-out infinite;
+}
+
+@keyframes cta-glow {
+    0%, 100% { box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 0 20px rgba(88, 166, 255, 0.1); }
+    50% { box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15), 0 0 30px rgba(88, 166, 255, 0.3); }
 }
 
 .cta-button:hover {
     transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2),
+        0 0 35px rgba(88, 166, 255, 0.35);
     filter: brightness(1.05);
+    animation: none;
 }
 
 .cta-button:active {
     transform: translateY(-1px) scale(0.98);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) inset;
+    animation: none;
 }
 
 /* ------------------- */
@@ -408,7 +408,16 @@ input:checked + .slider:before {
     width: 100%;
     max-width: 350px;
     border-radius: 12px;
-    border: 1px solid var(--border-color);
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    outline: 3px solid var(--accent-color);
+    outline-offset: 4px;
+    transition: outline-color 0.5s ease, transform 0.3s ease;
+}
+
+.profile-picture:hover {
+    outline-color: var(--accent-hover);
+    transform: scale(1.02);
 }
 
 .about-text h2 {
@@ -458,8 +467,10 @@ input:checked + .slider:before {
 }
 
 .project-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(88, 166, 255, 0.1);
+    border-color: var(--accent-color);
 }
 
 .project-image {
@@ -667,6 +678,12 @@ input:checked + .slider:before {
     border: 3px solid var(--bg-medium);
     transform: translateX(-50%);
     transition: background-color 0.3s ease, border-color 0.3s ease;
+    animation: dot-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes dot-pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(88, 166, 255, 0.4); }
+    50% { box-shadow: 0 0 0 6px rgba(88, 166, 255, 0); }
 }
 
 .timeline-date {
@@ -763,11 +780,28 @@ input:checked + .slider:before {
 .site-footer {
     background-color: var(--bg-medium);
     padding: 2rem 0;
-    border-top: 1px solid var(--border-color);
+    border-top: none;
     color: var(--text-secondary);
     font-size: 0.9rem;
-    transition: background-color 0.3s ease, border-top 0.3s ease,
-        color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    position: relative;
+}
+
+.site-footer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 2px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        var(--accent-color),
+        var(--accent-hover),
+        transparent
+    );
+    border-radius: 1px;
 }
 
 .footer-container {
@@ -785,7 +819,7 @@ input:checked + .slider:before {
 .project-hero h1 {
     font-size: 3.5rem;
     margin-bottom: 0.5rem;
-    color: #1a202c;
+    color: var(--text-primary, #1a202c);
     text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.6);
 }
 
@@ -793,7 +827,7 @@ input:checked + .slider:before {
     font-size: 1.25rem;
     max-width: 800px;
     margin: 0 auto;
-    color: #4a5568;
+    color: var(--text-secondary, #4a5568);
     text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
 }
 
@@ -1727,34 +1761,197 @@ code {
     }
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --card-background: #2c3e50;
-        --text-color: #ecf0f1;
-        --text-secondary: #bdc3c7;
-        --heading-color: #ecf0f1;
-        --subheading-color: #bdc3c7;
-        --border-color: #34495e;
-        --border-light: #34495e;
-        --code-background: #34495e;
-        --code-color: #e74c3c;
-    }
 
-    .experience-overview {
-        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-        color: var(--text-secondary);
-    }
-
-    .final-thoughts {
-        background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
-    }
-
-    code {
-        background: var(--code-background);
-        border-color: var(--border-color);
-    }
+/* ------------------- */
+/* Theme Toggle Button */
+/* ------------------- */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--border-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
+.theme-toggle:hover {
+    border-color: var(--accent-color);
+    transform: rotate(20deg) scale(1.1);
+    box-shadow: 0 0 12px rgba(88, 166, 255, 0.3);
+}
+
+/* ---------------------------------------- */
+/* Dark Theme — Component-Level Overrides   */
+/* ---------------------------------------- */
+
+/* Experience Hero — darken gradient */
+[data-theme="dark"] .experience-hero {
+    background: linear-gradient(135deg, #1a1a3e 0%, #2d1b4e 100%);
+}
+
+/* Project Hero — dark variant */
+[data-theme="dark"] .project-hero {
+    background: linear-gradient(135deg, #1a2a3a 0%, #2a1a3a 100%);
+}
+
+[data-theme="dark"] .project-hero::before {
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><polygon points="25,15 35,35 15,35" fill="rgba(255,255,255,0.05)"/><rect x="70" y="20" width="8" height="8" fill="rgba(255,255,255,0.04)"/><circle cx="60" cy="70" r="3" fill="rgba(255,255,255,0.06)"/></svg>');
+}
+
+[data-theme="dark"] .project-hero h1 {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+[data-theme="dark"] .project-hero p {
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Experience page variables for dark */
+[data-theme="dark"] {
+    --card-background: #161b22;
+    --text-color: #c9d1d9;
+    --heading-color: #c9d1d9;
+    --subheading-color: #8b949e;
+    --border-light: #30363d;
+    --code-background: #1c2128;
+    --code-color: #ff7b72;
+}
+
+/* Experience sidebar */
+[data-theme="dark"] .experience-sidebar {
+    background: var(--bg-medium);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .experience-sidebar a {
+    color: var(--text-secondary);
+}
+
+/* Experience overview */
+[data-theme="dark"] .experience-overview {
+    background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+    color: var(--text-secondary);
+}
+
+/* Experience cards */
+[data-theme="dark"] .approach-card,
+[data-theme="dark"] .comparison-card,
+[data-theme="dark"] .metric-card {
+    background: var(--bg-medium);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+[data-theme="dark"] .skill-category {
+    background: var(--bg-medium);
+    border-color: var(--border-color);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Features grid cards */
+[data-theme="dark"] .features-grid article {
+    background-color: var(--bg-medium);
+    border-color: var(--border-color);
+}
+
+/* Final thoughts */
+[data-theme="dark"] .final-thoughts {
+    background: linear-gradient(135deg, #161b22 0%, #1c2128 100%);
+}
+
+/* Code blocks */
+[data-theme="dark"] code {
+    background: var(--code-background);
+    border-color: var(--border-color);
+    color: var(--code-color);
+}
+
+/* Project tags */
+[data-theme="dark"] .project-tags span,
+[data-theme="dark"] .project-tags li {
+    background: linear-gradient(
+        135deg,
+        var(--bg-medium) 0%,
+        var(--border-color) 100%
+    );
+    color: var(--text-primary);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .project-tags span:hover,
+[data-theme="dark"] .project-tags li:hover {
+    box-shadow: 0 6px 20px rgba(88, 166, 255, 0.3);
+}
+
+/* Exhibition images */
+[data-theme="dark"] .exhibition-image {
+    background: var(--bg-medium);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .exhibition-image figcaption {
+    background: var(--bg-medium);
+    border-top-color: var(--border-color);
+}
+
+/* Case study cards */
+[data-theme="dark"] .case-study-card {
+    background-color: var(--bg-medium);
+    border-color: var(--border-color);
+}
+
+/* Student project cards */
+[data-theme="dark"] .student-project-card {
+    background-color: var(--bg-medium);
+    border-color: var(--border-color);
+}
+
+[data-theme="dark"] .student-project-card img {
+    border-bottom-color: var(--border-color);
+}
+
+/* Demo video */
+[data-theme="dark"] .demo-video {
+    border-color: var(--border-color);
+}
+
+/* Gallery */
+[data-theme="dark"] .gallery-grid figure {
+    border-color: var(--border-color);
+}
+
+/* Project sidebar */
+[data-theme="dark"] .project-sidebar article {
+    background-color: var(--bg-medium);
+    border-color: var(--border-color);
+}
+
+/* Showcase images */
+[data-theme="dark"] .showcase-grid img,
+[data-theme="dark"] .showcase-poster img {
+    border-color: var(--border-color);
+}
+
+/* Scrollbar */
+[data-theme="dark"] .gallery-grid::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+}
+
+[data-theme="dark"] .gallery-grid::-webkit-scrollbar-thumb {
+    background-color: var(--border-color);
+    border-color: var(--bg-dark);
+}
+
+/* ------------------- */
+/* Desktop Overrides   */
+/* ------------------- */
 @media (min-width: 992px) {
     .project-details-grid {
         grid-template-columns: 2fr 1fr;
@@ -1764,21 +1961,50 @@ code {
     }
 }
 
-/* Dark Mode Enhancements */
-@media (prefers-color-scheme: dark) {
-    .project-tags span,
-    .project-tags li {
-        background: linear-gradient(
-            135deg,
-            var(--card-background, #2c3e50) 0%,
-            var(--border-color, #34495e) 100%
-        );
-        color: var(--text-color, #ecf0f1);
-        border-color: var(--border-color, #34495e);
-    }
+/* -------------------------------- */
+/* Scroll Reveal Animations         */
+/* -------------------------------- */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
 
-    .project-tags span:hover,
-    .project-tags li:hover {
-        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger children for project cards */
+.projects-grid .project-card.reveal-on-scroll:nth-child(2) { transition-delay: 0.1s; }
+.projects-grid .project-card.reveal-on-scroll:nth-child(3) { transition-delay: 0.2s; }
+.projects-grid .project-card.reveal-on-scroll:nth-child(4) { transition-delay: 0.15s; }
+.projects-grid .project-card.reveal-on-scroll:nth-child(5) { transition-delay: 0.25s; }
+.projects-grid .project-card.reveal-on-scroll:nth-child(6) { transition-delay: 0.2s; }
+
+/* Smooth global transitions for theme switching */
+*,
+*::before,
+*::after {
+    transition-property: background-color, border-color, color, box-shadow, outline-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+}
+
+/* Override for elements that need different transition properties */
+a, .cta-button, .project-card, .theme-toggle, .profile-picture,
+.timeline-dot, .back-link, .experience-sidebar a {
+    transition: all 0.3s ease;
+}
+
+/* Reduce motion for accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
+    .timeline-dot { animation: none; }
+    .cta-button { animation: none; }
+    * { transition-duration: 0.01ms !important; }
 }

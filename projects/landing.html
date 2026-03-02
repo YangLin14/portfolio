@@ -3,8 +3,9 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Personal Portfolio Website - A fully responsive site built from scratch with HTML, CSS, and JavaScript to showcase projects and experience." />
         <title>Personal Website Project | Fong-Yu (Yang) Lin</title>
-        <link rel="icon" type="image/jpeg" href="../assets/images/logo.jpeg" />
+        <link rel="icon" type="image/jpeg" href="../assets/images/general/logo.jpeg" />
         <link rel="stylesheet" href="../style.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,7 +18,7 @@
         <header class="site-header">
             <section class="container">
                 <a href="../index.html" class="logo">Fong-Yu Lin</a>
-                <nav class="main-nav">
+                <nav class="main-nav" aria-label="Main navigation">
                     <ul>
                         <li><a href="../index.html#about">About</a></li>
                         <li><a href="../index.html#projects">Projects</a></li>
@@ -27,12 +28,7 @@
                         <li><a href="../index.html#contact">Contact</a></li>
                     </ul>
                 </nav>
-                <!-- <span class="theme-switch-wrapper">
-                    <label class="theme-switch" for="checkbox">
-                        <input type="checkbox" id="checkbox" />
-                        <span class="slider round"></span>
-                    </label>
-                </span> -->
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode">☀️</button>
             </section>
         </header>
 
@@ -77,7 +73,7 @@
                                     </li>
                                     <li>
                                         🎨 Dark/Light theme switcher with
-                                        `localStorage`
+                                        <code>localStorage</code>
                                     </li>
                                     <li>
                                         🧭 Smooth-scrolling single-page
@@ -131,7 +127,7 @@
                                     </p>
                                     <a
                                         href="https://yanglin14.github.io/portfolio/"
-                                        target="_blank"
+                                        target="_blank" rel="noopener noreferrer"
                                         class="project-link"
                                         >View Project &rarr;
                                     </a>
@@ -156,7 +152,7 @@
                                     </p>
                                     <a
                                         href="https://yanglin14.github.io/personal-website/"
-                                        target="_blank"
+                                        target="_blank" rel="noopener noreferrer"
                                         class="project-link"
                                         >View Project &rarr;
                                     </a>
@@ -168,7 +164,7 @@
                     <section class="project-section">
                         <h2>App Showcase 🎥</h2>
                         <h3 style="text-align: center">Initial Version</h3>
-                        <div class="video-showcase-wrapper">
+                        <figure class="video-showcase-wrapper">
                             <video controls>
                                 <source
                                     src="../assets/videos/landing_page_video.mp4"
@@ -176,7 +172,7 @@
                                 />
                                 Your browser does not support the video tag.
                             </video>
-                        </div>
+                        </figure>
                     </section>
 
                     <section class="project-section">

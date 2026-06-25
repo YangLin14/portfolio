@@ -17,8 +17,8 @@ A responsive personal portfolio website showcasing my software development proje
 ├── index.html          # Main portfolio page
 ├── style.css           # Global styles & theming
 ├── script.js           # Interactions & live clock
-├── projects/           # Individual project detail pages (10)
-├── experience/         # Individual experience detail pages (6)
+├── projects/           # Individual project detail pages (11)
+├── experience/         # Individual experience detail pages (9)
 ├── assets/
 │   ├── images/         # Project screenshots & photos
 │   └── videos/         # Demo videos

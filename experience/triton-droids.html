@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Triton Droids, UC San Diego - ML Team Member building falling policies and a Panda arm pick-and-place pipeline for a humanoid robot built from the ground up." />
+        <title>Triton Droids | Fong-Yu (Yang) Lin</title>
+        <link rel="icon" type="image/jpeg" href="../assets/images/general/logo.webp" />
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="site-header">
+            <section class="container">
+                <a href="../index.html" class="logo">Fong-Yu Lin</a>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li>
+                            <a href="../index.html#experience">Experience</a>
+                        </li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode">☀️</button>
+            </section>
+        </header>
+
+        <main>
+            <header class="experience-hero">
+                <div class="container">
+                    <p class="experience-dates">February 2026 - Present</p>
+                    <h1>ML Team Member</h1>
+                    <p class="experience-company">at Triton Droids, UC San Diego</p>
+                </div>
+            </header>
+
+            <div class="experience-layout container">
+                <aside class="experience-sidebar">
+                    <nav>
+                        <p>On this page</p>
+                        <ul>
+                            <li><a href="#overview">Overview</a></li>
+                            <li><a href="#ground-up">Building From the Ground Up</a></li>
+                            <li><a href="#projects">Current Projects</a></li>
+                            <li><a href="#sim-to-real">The Sim-to-Real Gap</a></li>
+                            <li><a href="#team">Team & Robot</a></li>
+                            <li><a href="#skills">Technologies & Tools</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+
+                <article class="experience-content">
+                    <p id="overview" class="experience-overview">
+                        Triton Droids is a UC San Diego student team building a
+                        humanoid robot from the ground up — hardware and
+                        software in parallel. I joined as an ML Team Member,
+                        working alongside the simulation and reinforcement
+                        learning sub-team to write the control policies that
+                        will eventually run on the physical robot.
+                    </p>
+
+                    <section id="ground-up">
+                        <h2>Building From the Ground Up</h2>
+                        <p>
+                            The team splits roughly into two halves: a
+                            hardware team handling the mechanical design and
+                            electrical systems, and an ML team (simulation +
+                            reinforcement learning) writing the policies that
+                            control the robot. Because both halves are moving
+                            at once, the policies I write have to target a
+                            robot whose exact mechanical properties are still
+                            being finalized — there's no stable, fully-built
+                            platform to assume.
+                        </p>
+                    </section>
+
+                    <section id="projects">
+                        <h2>Current Projects</h2>
+                        <ul>
+                            <li>
+                                <strong>Falling policy in MuJoCo</strong> —
+                                training a policy so the robot goes down
+                                safely and cleanly when it loses balance,
+                                combining imitation learning with
+                                reinforcement learning rather than relying on
+                                hand-tuned recovery heuristics.
+                            </li>
+                            <li>
+                                <strong>Panda arm pick-and-place pipeline</strong>
+                                — a simulation pipeline for a Franka Panda arm
+                                performing pick-and-place tasks, used as a
+                                second track for testing manipulation policies
+                                independent of the humanoid's locomotion work.
+                            </li>
+                            <li>
+                                <strong
+                                    ><a href="../projects/teleoperation.html"
+                                        >Humanoid Teleop</a
+                                    ></strong
+                                >
+                                — a wearable-IMU lower-body teleoperation
+                                pipeline built with a 6-person team as our
+                                UCSD CSE 145 final project, covering pose
+                                reconstruction, retargeting, and PPO motion
+                                tracking validated in IsaacLab and MuJoCo.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section id="sim-to-real">
+                        <h2>The Sim-to-Real Gap</h2>
+                        <p>
+                            What makes this different from most school
+                            robotics projects is that the hardware team is
+                            building the physical robot at the same time the
+                            ML team is writing the policies for it. The
+                            sim-to-real gap isn't an abstract case study read
+                            about in a paper — it's a concrete, recurring
+                            problem that shows up in nearly every team
+                            meeting, from mismatched mass/inertia estimates to
+                            actuator limits the simulator doesn't model yet.
+                        </p>
+                    </section>
+
+                    <section id="team">
+                        <h2>Team & Robot</h2>
+                        <p>
+                            The hardware team's progress in the same lab,
+                            captured mid-build.
+                        </p>
+                        <div class="case-study-grid">
+                            <div class="case-study-card">
+                                <img
+                                    src="../assets/images/experience/triton_droids/group pic.webp"
+                                    alt="Triton Droids full team with the in-progress humanoid robot"
+                                />
+                                <h4>Full Team</h4>
+                            </div>
+                            <div class="case-study-card">
+                                <img
+                                    src="../assets/images/experience/triton_droids/humanoid full body.webp"
+                                    alt="Humanoid robot mid-build, suspended in a hoist rig"
+                                />
+                                <h4>Humanoid Robot (Mid-Build)</h4>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="skills">
+                        <h2>Technologies & Tools</h2>
+                        <ul class="tech-stack">
+                            <li>Python</li>
+                            <li>MuJoCo</li>
+                            <li>Reinforcement Learning</li>
+                            <li>Imitation Learning</li>
+                            <li>Franka Panda Arm</li>
+                            <li>Robot Simulation</li>
+                            <li>Sim-to-Real Transfer</li>
+                        </ul>
+                    </section>
+                    <a href="../index.html#experience" class="back-link"
+                        >&larr; Back to All Experiences</a
+                    >
+                </article>
+            </div>
+        </main>
+
+        <footer class="site-footer">
+            <section class="container footer-container">
+                <p>
+                    &copy; <span id="year"></span> Fong-Yu (Yang) Lin. All
+                    Rights Reserved.
+                </p>
+                <p id="location-time"></p>
+            </section>
+        </footer>
+
+        <script src="../script.js" defer></script>
+    </body>
+</html>

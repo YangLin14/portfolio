@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Humanoid Robot Teleoperation - A low-cost wearable IMU-based human pose retargeting and motion tracking pipeline for a simulated humanoid robot, built for UCSD CSE 145." />
+        <title>Humanoid Robot Teleoperation | Fong-Yu (Yang) Lin</title>
+        <link rel="icon" type="image/jpeg" href="../assets/images/general/logo.webp" />
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="site-header">
+            <section class="container">
+                <a href="../index.html" class="logo">Fong-Yu Lin</a>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li>
+                            <a href="../index.html#experience">Experience</a>
+                        </li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode">☀️</button>
+            </section>
+        </header>
+
+        <main>
+            <header class="project-hero">
+                <section class="container">
+                    <h1>Humanoid Robot Teleoperation 🦾</h1>
+                    <p>
+                        A low-cost (~$180 in hardware) wearable IMU pipeline
+                        that streams lower-body motion at 100 Hz with
+                        sub-50ms latency, retargets it onto a custom humanoid,
+                        and trains a PPO motion-tracking policy validated in
+                        IsaacLab and MuJoCo.
+                    </p>
+                </section>
+            </header>
+
+            <article class="project-page-content">
+                <section class="container">
+                    <!-- Summary Section -->
+                    <section class="project-section">
+                        <h2>Project Summary</h2>
+                        <p>
+                            This is the
+                            <a href="../experience/triton-droids.html"
+                                >Triton Droids</a
+                            >
+                            "Humanoid Teleop" project, built with a 6-person
+                            team as the final project for UCSD CSE 145. It
+                            develops a low-cost lower-body humanoid teleoperation
+                            pipeline using wearable IMUs, human pose
+                            reconstruction, retargeting, and
+                            simulation-based motion tracking — instead of
+                            relying on expensive motion capture hardware.
+                            Five BNO085 IMUs paired with ESP32-S3
+                            microcontrollers stream fused orientation
+                            quaternions over Wi-Fi/UDP at 100 Hz, achieving
+                            end-to-end latency under 50 ms from wearable
+                            sensing to simulated humanoid output. The
+                            pipeline reconstructs a lower-body human skeleton,
+                            retargets it onto a custom humanoid robot model
+                            (<code>ch_robot</code>), and trains a PPO-based
+                            motion-tracking policy with residual PD control in
+                            IsaacLab, validated in MuJoCo — all for
+                            approximately $180 in hardware cost.
+                            <br /><br />
+                            <strong
+                                ><a
+                                    href="../docs/CSE145 Final Report.pdf"
+                                    target="_blank" rel="noopener noreferrer"
+                                    >Read the full paper (PDF) &rarr;</a
+                                ></strong
+                            ><br />
+                            <strong
+                                ><a
+                                    href="https://docs.google.com/presentation/d/1s76s8_t1mvNn0kJ8kPQqQrZ_8_lRYC3cwfN3Hhx1VVo/edit?usp=sharing"
+                                    target="_blank" rel="noopener noreferrer"
+                                    >View the final presentation slides
+                                    &rarr;</a
+                                ></strong
+                            ><br />
+                            <strong
+                                ><a
+                                    href="https://drive.google.com/file/d/1EOi07rMqLLXCyE_dMbdflf6c8qUGYUw1/view?usp=sharing"
+                                    target="_blank" rel="noopener noreferrer"
+                                    >Watch the final demo video &rarr;</a
+                                ></strong
+                            >
+                        </p>
+                    </section>
+
+                    <!-- System Architecture Section -->
+                    <section class="project-section">
+                        <h2>System Architecture</h2>
+                        <section class="features-grid">
+                            <article>
+                                <h3>1. Wearable IMUs</h3>
+                                <ul>
+                                    <li>
+                                        🩻 5× BNO085 IMUs + ESP32-S3 boards,
+                                        strapped to pelvis, thighs, and shanks
+                                    </li>
+                                    <li>
+                                        📶 Fused orientation quaternions
+                                        streamed over Wi-Fi/UDP at 100 Hz
+                                    </li>
+                                    <li>
+                                        ⚡ Sub-50ms end-to-end latency, ~$180
+                                        total hardware cost
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>2. Pose Estimation</h3>
+                                <ul>
+                                    <li>
+                                        🧮 Neutral-pose calibration and SLERP
+                                        smoothing of IMU streams
+                                    </li>
+                                    <li>
+                                        🦴 Forward-kinematics reconstruction of
+                                        a 9-keypoint lower-body skeleton from
+                                        5 physical IMUs
+                                    </li>
+                                    <li>
+                                        📷 MediaPipe + FastAPI RGBD camera
+                                        baseline for comparison/fallback
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>3. Retargeting</h3>
+                                <ul>
+                                    <li>
+                                        🔧 Adapted the Holosoma pipeline to a
+                                        custom 10-DOF humanoid model
+                                        (<code>ch_robot</code>)
+                                    </li>
+                                    <li>
+                                        🪢 Maps the human skeleton into robot
+                                        generalized coordinates (URDF-aligned)
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>4. RL Training</h3>
+                                <ul>
+                                    <li>
+                                        🏋️ PPO motion-tracking policy trained
+                                        in IsaacLab on retargeted reference
+                                        motion
+                                    </li>
+                                    <li>
+                                        🎛️ Residual PD control: retargeted
+                                        motion sets nominal joint targets, the
+                                        policy learns bounded corrections
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>5. Sim2Sim Validation</h3>
+                                <ul>
+                                    <li>
+                                        🧪 Trained policy re-evaluated in
+                                        MuJoCo for higher-fidelity validation
+                                    </li>
+                                    <li>
+                                        🛑 Real robot deployment intentionally
+                                        deferred until this validation step is
+                                        solid
+                                    </li>
+                                </ul>
+                            </article>
+                        </section>
+                    </section>
+
+                    <!-- Gallery Section -->
+                    <section id="gallery" class="project-section">
+                        <h2>Project Gallery</h2>
+                        <section class="gallery-grid gallery-grid-landscape">
+                            <figure>
+                                <img
+                                    src="../assets/images/projects/teleop/embedded devices.webp"
+                                    alt="Wearable IMU sensor rig with ESP32 boards"
+                                    loading="lazy"
+                                />
+                            </figure>
+                            <figure>
+                                <img
+                                    src="../assets/images/projects/teleop/final demo setup.webp"
+                                    alt="Team running the final teleoperation demo"
+                                    loading="lazy"
+                                />
+                            </figure>
+                        </section>
+                    </section>
+
+                    <!-- My Role Section -->
+                    <section class="project-section">
+                        <h2>My Role</h2>
+                        <p>
+                            I worked on the ML side alongside the embedded
+                            team. My contributions included high-level
+                            project spec clarification and workflow planning,
+                            researching and designing the motion-tracking
+                            reward and policy, handling Sim2Sim evaluation
+                            from IsaacLab to MuJoCo, building the online
+                            retargeting algorithm for live streamed IMU data,
+                            and managing the data pipeline used for policy
+                            training.
+                        </p>
+                    </section>
+
+                    <!-- Milestones Section -->
+                    <section class="project-section">
+                        <h2>Milestones & Future Work</h2>
+                        <p>
+                            Most of the core simulation-based teleoperation
+                            pipeline shipped: wearable IMU sensing, multi-node
+                            wireless streaming, lower-body pose
+                            reconstruction, sparse keypoint generation, pose
+                            clip export, human-to-robot retargeting, and
+                            simulation-based motion tracking. Real robot
+                            deployment and full-body teleoperation were
+                            intentionally deferred as future work — they
+                            require more robust root-translation estimation,
+                            contact-aware retargeting, and additional safety
+                            validation before commanding physical hardware.
+                        </p>
+                    </section>
+
+                    <!-- Tech Stack Section -->
+                    <section class="project-section">
+                        <h2>Technology Stack</h2>
+                        <ul class="tech-stack">
+                            <li>Python</li>
+                            <li>IsaacLab</li>
+                            <li>MuJoCo</li>
+                            <li>OpenSim</li>
+                            <li>MediaPipe</li>
+                            <li>FastAPI</li>
+                            <li>ESP32-S3</li>
+                            <li>BNO085 IMU</li>
+                            <li>Jetson</li>
+                            <li>Holosoma</li>
+                            <li>PPO</li>
+                        </ul>
+                    </section>
+
+                    <a href="../index.html#projects" class="back-link"
+                        >&larr; Back to All Projects</a
+                    >
+                </section>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <section class="container footer-container">
+                <p>
+                    &copy; <span id="year"></span> Fong-Yu (Yang) Lin. All
+                    Rights Reserved.
+                </p>
+                <p id="location-time"></p>
+            </section>
+        </footer>
+
+        <script src="../script.js" defer></script>
+    </body>
+</html>

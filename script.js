@@ -40,6 +40,38 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     });
 });
 
+// --- Mobile nav toggle ---
+const navToggle = document.getElementById("nav-toggle");
+const mainNav = document.querySelector(".main-nav");
+
+function closeMobileNav() {
+    if (!navToggle || !mainNav) return;
+    mainNav.classList.remove("is-open");
+    navToggle.setAttribute("aria-expanded", "false");
+}
+
+if (navToggle && mainNav) {
+    navToggle.addEventListener("click", () => {
+        const isOpen = mainNav.classList.toggle("is-open");
+        navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    mainNav.querySelectorAll("a").forEach((link) => {
+        link.addEventListener("click", closeMobileNav);
+    });
+
+    document.addEventListener("click", (e) => {
+        if (!mainNav.classList.contains("is-open")) return;
+        if (!mainNav.contains(e.target) && e.target !== navToggle) {
+            closeMobileNav();
+        }
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape") closeMobileNav();
+    });
+}
+
 // --- Active nav link tracking (only on index page) ---
 const navLinks = document.querySelectorAll('.main-nav a[href^="#"]');
 const sections = [];

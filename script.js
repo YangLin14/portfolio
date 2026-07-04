@@ -10,12 +10,10 @@ function setTheme(theme) {
     }
 }
 
-// Initialize theme from localStorage or system preference
+// Initialize theme from localStorage, otherwise default to dark.
 const saved = localStorage.getItem("theme");
 if (saved) {
     setTheme(saved);
-} else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
-    setTheme("light");
 } else {
     setTheme("dark");
 }

@@ -87,6 +87,7 @@
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
 body {
@@ -95,6 +96,7 @@ body {
     font-family: var(--font-family);
     line-height: 1.6;
     transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
 }
 
 [data-theme="light"] body {
@@ -334,14 +336,17 @@ ol {
 }
 
 .hero-content {
+    width: 100%;
     max-width: 900px;
     padding: 0 1rem;
+    min-width: 0;
 }
 
 .hero-headline {
     font-size: 3.5rem;
     font-weight: 700;
     color: #ffffff !important;
+    overflow-wrap: anywhere;
 }
 
 .hero-subheadline {
@@ -349,6 +354,7 @@ ol {
     max-width: 650px;
     margin: 1.5rem auto 2.5rem;
     color: #e2e8f0 !important;
+    overflow-wrap: anywhere;
 }
 
 .cta-button {
@@ -388,6 +394,35 @@ ol {
     transform: translateY(-1px) scale(0.98);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) inset;
     animation: none;
+}
+
+.hero-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hero-resource-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem 1.5rem;
+}
+
+.hero-resource-links a {
+    color: #e2e8f0;
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: rgba(226, 232, 240, 0.65);
+    text-underline-offset: 0.35rem;
+    text-decoration-thickness: 1px;
+}
+
+.hero-resource-links a:hover {
+    color: #ffffff;
+    text-decoration-color: var(--accent-hover);
 }
 
 /* ------------------- */
@@ -820,6 +855,100 @@ ol {
 .social-links a:hover::after {
     transform: scaleX(1);
     transform-origin: bottom left;
+}
+
+/* ------------------- */
+/* QR Code Page */
+/* ------------------- */
+.qr-hero {
+    padding: 8rem 0 4rem;
+    text-align: center;
+    background: linear-gradient(135deg, #0d1b2a 0%, #1b263b 52%, #0f172a 100%);
+}
+
+.qr-hero h1 {
+    font-size: 3.5rem;
+    color: #ffffff;
+    overflow-wrap: anywhere;
+}
+
+.qr-hero p {
+    max-width: 680px;
+    margin: 0 auto;
+    color: #e2e8f0;
+    font-size: 1.2rem;
+    overflow-wrap: anywhere;
+}
+
+.qr-section {
+    background-color: var(--bg-dark);
+}
+
+.qr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+}
+
+.qr-card {
+    height: 100%;
+    padding: 1.25rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    background-color: var(--bg-medium);
+    text-align: center;
+    transition: transform 0.3s ease, border-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+.qr-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+
+.featured-qr-card {
+    border-color: var(--accent-color);
+}
+
+.qr-image {
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 1;
+    margin: 0 auto 1.25rem;
+    border-radius: 8px;
+    background: #ffffff;
+    border: 8px solid #ffffff;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.16);
+    display: block;
+    object-fit: contain;
+}
+
+.qr-card h2 {
+    font-size: 1.35rem;
+    margin-bottom: 0.5rem;
+}
+
+.qr-card p {
+    min-height: 3rem;
+    margin-bottom: 1rem;
+}
+
+.qr-link {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 42px;
+    padding: 0.65rem 1rem;
+    border-radius: 8px;
+    background-color: rgba(88, 166, 255, 0.12);
+    color: var(--accent-color);
+    font-weight: 700;
+}
+
+.qr-link:hover {
+    background-color: var(--accent-color);
+    color: var(--cta-text-color);
 }
 
 .tech-stack {
@@ -1731,6 +1860,10 @@ code {
 /* Responsive Design */
 /* ------------------- */
 @media (max-width: 768px) {
+    .container {
+        padding: 0 1.25rem;
+    }
+
     h2 {
         font-size: 2rem;
     }
@@ -1789,7 +1922,37 @@ code {
     }
 
     .hero-headline {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
+        max-width: 270px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .hero-subheadline {
+        font-size: 1rem;
+        max-width: 270px;
+    }
+
+    .hero-actions {
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .qr-hero {
+        padding: 5rem 0 3rem;
+    }
+
+    .qr-hero h1 {
+        font-size: 1.8rem;
+    }
+
+    .qr-hero p {
+        max-width: 270px;
+        font-size: 1rem;
+    }
+
+    .qr-grid {
+        grid-template-columns: minmax(0, 1fr);
     }
 
     .about-container {
@@ -1892,6 +2055,10 @@ code {
     }
 
     .project-hero h1 {
+        font-size: 2rem;
+    }
+
+    .qr-hero h1 {
         font-size: 2rem;
     }
 

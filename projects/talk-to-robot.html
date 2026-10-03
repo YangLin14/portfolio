@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="LLM Spatial Grounding (Talk-to-Robot) - A CSE 190 study of where LLMs fail when turning spatial language into robot goals, measured across five tiers of instruction abstraction." />
+        <title>LLM Spatial Grounding (Talk-to-Robot) | Fong-Yu (Yang) Lin</title>
+        <link rel="icon" type="image/jpeg" href="../assets/images/general/logo.webp" />
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="site-header">
+            <section class="container">
+                <a href="../index.html" class="logo">Fong-Yu Lin</a>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li>
+                            <a href="../index.html#experience">Experience</a>
+                        </li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode">☀️</button>
+            </section>
+        </header>
+
+        <main>
+            <header class="project-hero">
+                <section class="container">
+                    <h1>LLM Spatial Grounding (Talk-to-Robot)</h1>
+                    <p>
+                        A CSE 190 study of where LLMs fail when turning spatial
+                        language into robot goals. Gemini 2.5 Flash converts
+                        instructions into 3D goals, and a SAC+HER policy on
+                        FetchPush-v4 executes them. I was first author and tech
+                        lead on a 4-person team.
+                    </p>
+                </section>
+            </header>
+
+            <article class="project-page-content">
+                <section class="container">
+                    <!-- Setup Section -->
+                    <section class="project-section">
+                        <h2>Setup</h2>
+                        <p>
+                            The pipeline has two stages. An instruction in
+                            natural language goes to Gemini 2.5 Flash, which
+                            returns a 3D goal position. That goal is handed to a
+                            SAC+HER policy trained on FetchPush-v4, which pushes
+                            the block toward it.
+                        </p>
+                        <p>
+                            <strong
+                                ><a
+                                    href="https://github.com/YangLin14/LLM-FetchPush"
+                                    target="_blank" rel="noopener noreferrer"
+                                    >View the repo on GitHub &rarr;</a
+                                ></strong
+                            >
+                            (it includes a 7-task onboarding curriculum)
+                        </p>
+                        <p><em>Course project paper, not peer reviewed.</em></p>
+                    </section>
+
+                    <!-- Benchmark Section -->
+                    <section class="project-section">
+                        <h2>Benchmark</h2>
+                        <p>
+                            We wrote a five-tier benchmark that holds the robot
+                            and the policy fixed and varies only how abstract
+                            the instruction is.
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>T0:</strong> literal coordinates, given
+                                directly in the instruction
+                            </li>
+                            <li>
+                                <strong>T4:</strong> abstract intent
+                            </li>
+                        </ul>
+                        <!-- TODO(Yang): add the exact wording for tiers T1, T2, and T3 from the report -->
+                    </section>
+
+                    <!-- Findings Section -->
+                    <section class="project-section">
+                        <h2>Findings</h2>
+                        <p>
+                            Accuracy drops roughly monotonically from T0 to T4,
+                            and each tier fails in its own way.
+                        </p>
+                        <ul>
+                            <li>
+                                <strong>T2:</strong> hallucinates goals outside
+                                the robot's workspace
+                            </li>
+                            <li>
+                                <strong>T3:</strong> a systematic magnitude
+                                offset of about 6 cm
+                            </li>
+                            <li>
+                                <strong>T4:</strong> under-specifies the intent,
+                                so the goal is only loosely related to what was
+                                asked
+                            </li>
+                        </ul>
+                        <!-- TODO(Yang): add a figure (accuracy by tier) and a link to the final report PDF if you want it public -->
+                    </section>
+
+                    <!-- The Audit Section -->
+                    <section class="project-section">
+                        <h2>The audit</h2>
+                        <p>
+                            An early version of the results showed accuracy
+                            climbing back up at T3, which did not fit anything
+                            else we saw. I audited the evaluation code and found
+                            the cause: the success threshold was not consistent
+                            across tiers, 8 cm in one place and 5 cm in another.
+                            The rebound was an artifact of the looser threshold.
+                            With one threshold everywhere, the trend is
+                            monotonic.
+                        </p>
+                    </section>
+
+                    <!-- Policy Section -->
+                    <section class="project-section">
+                        <h2>Policy</h2>
+                        <p>
+                            The SAC+HER policy on FetchPush-v4 reaches about 95%
+                            success at 600k steps and about 100% at 700k.
+                        </p>
+                    </section>
+
+                    <!-- My Role Section -->
+                    <section class="project-section">
+                        <h2>My Role</h2>
+                        <p>
+                            I was first author and tech lead on a 4-person team
+                            with Joseph, Nasser, and Waleed. I led the topic
+                            pivot after our professor's feedback, wrote the
+                            introduction and conclusion, and ran the audit that
+                            caught the false T3 rebound.
+                        </p>
+                    </section>
+
+                    <!-- Tech Stack Section -->
+                    <section class="project-section">
+                        <h2>Technology Stack</h2>
+                        <ul class="tech-stack">
+                            <li>Python</li>
+                            <li>MuJoCo</li>
+                            <li>Gymnasium Robotics</li>
+                            <li>SAC+HER</li>
+                            <li>Gemini 2.5 Flash</li>
+                        </ul>
+                    </section>
+
+                    <a href="../index.html#projects" class="back-link"
+                        >&larr; Back to All Projects</a
+                    >
+                </section>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <section class="container footer-container">
+                <p>
+                    &copy; <span id="year"></span> Fong-Yu (Yang) Lin. All
+                    Rights Reserved.
+                </p>
+                <p id="location-time"></p>
+            </section>
+        </footer>
+
+        <script src="../script.js" defer></script>
+    </body>
+</html>

@@ -38,6 +38,7 @@
             <!-- Experience Hero Section -->
             <header class="experience-hero">
                 <div class="container">
+                    <!-- TODO(Yang): confirm ERSP end month; make resume and site match -->
                     <p class="experience-dates">September 2024 - May 2025</p>
                     <h1>Computer Vision Research</h1>
                     <p class="experience-company">
@@ -67,14 +68,12 @@
                 <!-- Main Content -->
                 <article class="experience-content">
                     <p id="overview" class="experience-overview">
-                        During my computer vision research at UCSD, I
-                        contributed to developing innovative methodologies for
-                        3D scene understanding, evaluation, and synthesis by
-                        integrating large language models (LLMs) and
-                        vision-language models (VLMs) with a team of two other
-                        undergraduate researchers. Our work focused on
-                        leveraging these tools to address spatial reasoning
-                        challenges and optimize 3D scene layouts.
+                        I worked in Prof. Manmohan Chandraker's group on a
+                        3-student team, using large language models (LLMs) and
+                        vision-language models (VLMs) for 3D scene
+                        understanding, evaluation, and synthesis. We used these
+                        models to score rendered 3D scenes and to place ceiling
+                        lights, treating the LLM as a black-box optimizer.
                     </p>
 
                     <section id="contributions">
@@ -83,9 +82,9 @@
                             <li>
                                 Enhanced the
                                 <strong>SceneProgLLM</strong> framework by
-                                integrating advanced APIs like Anthropic and
-                                Ollama and enabling support for local images in
-                                scene rendering pipelines.
+                                adding Anthropic and Ollama backends and
+                                local-image support to its scene rendering
+                                pipelines.
                             </li>
                             <li>
                                 Collaborated on designing
@@ -99,8 +98,8 @@
                             <li>
                                 Designed and implemented prompts to evaluate the
                                 impact of different ceiling light positions on
-                                3D scene illumination, leveraging LLMs to
-                                generate scored image outputs with detailed
+                                3D scene illumination, using LLMs to
+                                generate scored image outputs with their
                                 reasoning.
                             </li>
                             <li>
@@ -122,9 +121,9 @@
                             tools like SAM2, Detectron2, and CLIP into a visual
                             evaluator pipeline to improve semantic filtering and
                             depth estimation for scene evaluation. This work
-                            included experimenting with structured outputs under
-                            varying conditions and exploring the trade-offs
-                            between engineered DSLs and LLM-designed DSLs.
+                            included experimenting with structured outputs
+                            under varying conditions and comparing hand-written
+                            DSLs against LLM-designed ones.
                         </p>
                     </section>
 

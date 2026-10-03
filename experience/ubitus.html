@@ -39,7 +39,7 @@
                     <p class="experience-dates">
                         June 25, 2025 - September 12, 2025
                     </p>
-                    <h1>Software Engineering Intern</h1>
+                    <h1>Software Engineer Intern</h1>
                     <p class="experience-company">
                         at Ubitus K.K. | Terminal Device Group (TDG)
                     </p>
@@ -62,7 +62,7 @@
                                 <a href="#phase2">Cross-Collection Search</a>
                             </li>
                             <li><a href="#phase3">Search Optimization</a></li>
-                            <li><a href="#security">Security Framework</a></li>
+                            <li><a href="#security">PromptGuard</a></li>
                             <li>
                                 <a href="#exhibition">AI WAVE Exhibition</a>
                             </li>
@@ -81,12 +81,10 @@
                     <p class="experience-overview">
                         During my 12-week internship at Ubitus K.K., I joined
                         the Terminal Device Group (TDG) working across web
-                        frontend, 3D, and CNF (Console and Frontier) teams. This
-                        transformative experience involved developing
-                        cutting-edge AI infrastructure solutions, from semantic
-                        search optimization to company-wide security frameworks,
-                        while gaining profound insights into engineering
-                        philosophy and problem-solving approaches.
+                        frontend, 3D, and CNF (Console and Frontier) teams. I
+                        worked on AI infrastructure, from semantic search
+                        retrieval to prompt-injection testing, and spent time
+                        in live demos at the AI WAVE exhibition.
                     </p>
 
                     <section id="overview">
@@ -97,39 +95,35 @@
                             company's large language model, to perform accurate
                             and efficient semantic searches across multiple
                             Milvus vector database collections. The project
-                            evolved through three distinct phases, each building
-                            upon the previous to create a comprehensive solution
-                            that achieved a 77.8% F1 Score.
+                            evolved through three phases. The final design
+                            reached a 77.8% F1 score on our internal eval, up
+                            from 58% with the L2-distance baseline.
                         </p>
                         <p>
-                            Beyond the core MCP project, I architected a
-                            company-wide prompt injection defense framework and
-                            served as the primary technical operator for the G1
-                            humanoid robot at the AI WAVE exhibition, providing
-                            a well-rounded experience in AI development,
-                            security, and real-world applications.
+                            Beyond the core MCP project, I built
+                            PromptGuard, a prompt-injection testing tool, and
+                            operated the Unitree G1 humanoid through Apple
+                            Vision Pro teleoperation in live demos at the
+                            AI WAVE 2025 exhibition.
                         </p>
                     </section>
 
                     <section id="phase1">
                         <h2>Phase 1: MCP Server Foundation</h2>
                         <p>
-                            The journey began with inheriting and transforming a
-                            coworker's database search algorithm from
-                            <code>milvus_memory.py</code> into a robust,
-                            containerized MCP server. This foundational work
-                            established the groundwork for all subsequent
-                            enhancements.
+                            Phase 1 took a coworker's database search
+                            script, <code>milvus_memory.py</code>, and turned
+                            it into a containerized MCP server. That became
+                            the base for everything after it.
                         </p>
 
-                        <h3>System Architecture Development</h3>
+                        <h3>Server Design</h3>
                         <p>
                             Designed and built a Python-based MCP server to act
                             as middleware between the UbiGPT LLM and the Milvus
-                            vector database. The architecture required careful
-                            consideration of connection stability, data
-                            formatting, and error handling to ensure reliable
-                            operation in a production environment.
+                            vector database. The design had to handle
+                            connection stability, data formatting, and errors
+                            to run reliably in production.
                         </p>
 
                         <h3>Key Technical Achievements</h3>
@@ -148,12 +142,11 @@
                                 dictionaries into structured JSON strings
                             </li>
                             <li>
-                                Implemented robust error handling and logging
-                                mechanisms
+                                Added error handling and logging
                             </li>
                             <li>
-                                Created comprehensive documentation for future
-                                maintenance and scaling
+                                Wrote documentation for future maintenance
+                                and scaling
                             </li>
                         </ul>
 
@@ -166,16 +159,16 @@
                     </section>
 
                     <section id="phase2">
-                        <h2>Phase 2: Cross-Collection Search Architecture</h2>
+                        <h2>Phase 2: Cross-Collection Search</h2>
                         <p>
                             The most intellectually challenging phase involved
                             enabling searches across multiple database
-                            collections. This required innovative thinking about
-                            how to balance LLM cognitive load, system
-                            performance, and search accuracy.
+                            collections. The question was how to balance LLM
+                            cognitive load, system performance, and search
+                            accuracy.
                         </p>
 
-                        <h3>Three Architectural Approaches</h3>
+                        <h3>Three Designs I Benchmarked</h3>
                         <section class="approach-grid">
                             <article class="approach-card">
                                 <h4>Method A: Naive Approach (Discarded)</h4>
@@ -191,8 +184,7 @@
                             <article class="approach-card">
                                 <h4>Method B: "Three Tools" Approach</h4>
                                 <p>
-                                    Developed a sophisticated system providing
-                                    the LLM with three discrete tools:
+                                    Gave the LLM three discrete tools:
                                     <code>list_collections</code>,
                                     <code>list_schemas</code>, and
                                     <code>search</code>. This enabled agentic
@@ -207,13 +199,11 @@
                                     Method C: "One Tool" Approach (Selected)
                                 </h4>
                                 <p>
-                                    Engineered a more efficient solution that
-                                    abstracts database complexity by
-                                    pre-generating comprehensive descriptions of
-                                    all collections and schemas. This approach
-                                    reduced cognitive load on the LLM while
-                                    maintaining search effectiveness and
-                                    improving overall system performance.
+                                    Abstracts database complexity by
+                                    pre-generating descriptions of all
+                                    collections and schemas. This reduced
+                                    cognitive load on the LLM while keeping
+                                    search quality.
                                 </p>
                             </article>
                         </section>
@@ -221,23 +211,20 @@
                         <h3>Implementation Details</h3>
                         <p>
                             The "One Tool" approach involved creating
-                            intelligent abstractions that combined collection
-                            metadata with schema information into easily
-                            digestible formats for the LLM. This required
-                            careful consideration of information density,
-                            relevance filtering, and presentation formatting to
-                            optimize LLM comprehension without overwhelming the
-                            context window.
+                            abstractions that combined collection metadata
+                            with schema information into a compact format for
+                            the LLM, with attention to information density,
+                            relevance filtering, and the size of the context
+                            window.
                         </p>
                     </section>
 
                     <section id="phase3">
                         <h2>Phase 3: Search Result Optimization</h2>
                         <p>
-                            The final phase focused on dramatically improving
-                            search accuracy by transitioning from basic distance
-                            metrics to sophisticated semantic analysis
-                            techniques.
+                            The final phase improved search accuracy by
+                            replacing a distance metric with a cross-encoder
+                            re-ranker.
                         </p>
 
                         <h3>From L2 Distance to Re-ranking Models</h3>
@@ -246,16 +233,16 @@
                             distance for filtering search results. While
                             computationally efficient, this approach often
                             missed semantically relevant results that didn't
-                            align perfectly in vector space. The transition to
-                            re-ranking models represented a significant leap in
-                            search quality.
+                            align closely in vector space. Switching to a
+                            cross-encoder re-ranker raised internal eval F1
+                            from 58% to 77.8%.
                         </p>
 
                         <h3>Re-ranking Implementation</h3>
                         <p>
-                            Leveraged advanced re-ranking models to analyze
-                            semantic relevance between raw user query text and
-                            retrieved documents. This approach considers
+                            A cross-encoder re-ranker scores semantic
+                            relevance between the raw user query text and each
+                            retrieved document. This approach considers
                             contextual meaning, synonyms, and conceptual
                             relationships that pure vector distance calculations
                             might miss.
@@ -302,38 +289,37 @@
                         </section>
 
                         <p>
-                            After comprehensive analysis, the re-ranking
-                            approach was selected as the optimal solution,
-                            justifying the slight performance trade-off with
-                            significantly improved search relevance and user
-                            satisfaction.
+                            I picked the re-ranking approach: the extra
+                            compute buys a large gain in search relevance.
                         </p>
                     </section>
 
                     <section id="security">
-                        <h2>Company-Wide Security Framework</h2>
+                        <h2>PromptGuard: Prompt-Injection Testing</h2>
                         <p>
-                            Following the successful completion of the MCP
-                            server project, I was tasked with developing a
-                            comprehensive prompt injection defense framework to
-                            protect the company's AI applications from
-                            sophisticated attacks.
+                            After the MCP server project I built
+                            PromptGuard, a prompt-injection testing tool, on
+                            top of utkusen's open-source
+                            <a
+                                href="https://github.com/utkusen/promptmap"
+                                target="_blank" rel="noopener noreferrer"
+                                >promptmap</a
+                            >.
                         </p>
 
-                        <h3>Multi-LLM Architecture</h3>
+                        <h3>Three LLM Roles</h3>
                         <p>
-                            Designed a sophisticated system featuring separate
-                            target, controller, and improver LLMs working in
-                            concert to create a complete test-and-fix cycle for
-                            prompt vulnerabilities.
+                            A target LLM is attacked, a controller LLM
+                            judges each result, and an Improver LLM reads the
+                            failures and proposes a hardened system prompt.
                         </p>
 
                         <h3>Framework Features</h3>
                         <ul>
                             <li>
-                                <strong>Comprehensive Test Coverage:</strong> 63
-                                pre-built rules across 7 distinct attack
-                                categories
+                                <strong>Test Coverage:</strong> 50+
+                                pre-built rules across 7 attack categories,
+                                including an override-rule category I added
                             </li>
                             <li>
                                 <strong>Automated Improvement:</strong> System
@@ -356,20 +342,17 @@
                                 export
                             </li>
                             <li>
-                                <strong>Scalable Deployment:</strong> Designed
-                                for company-wide rollout across multiple AI
-                                applications
+                                <strong>Packaging:</strong> Refactored the
+                                scanner into a modular Python package, with
+                                UbiGPT provider support
                             </li>
                         </ul>
 
-                        <h3>Impact and Results</h3>
+                        <h3>Results</h3>
                         <p>
-                            The framework achieved a remarkable 100% mitigation
-                            rate against injection attacks across five AI
-                            applications, providing the QA team with powerful
-                            automated vulnerability assessment capabilities.
-                            This success led to company-wide adoption and
-                            integration into the standard testing pipeline.
+                            I used PromptGuard to harden the system prompts of
+                            5 internal LLM products, and handed the QA team an
+                            automated way to re-run the tests.
                         </p>
 
                         <h3>Team Presentation</h3>
@@ -386,10 +369,10 @@
                         <h2>AI WAVE Exhibition - G1 Humanoid Robot</h2>
                         <p>
                             Beyond software development, I gained invaluable
-                            experience as the primary technical operator for the
-                            G1 humanoid robot at the AI WAVE exhibition,
-                            bridging the gap between cutting-edge AI technology
-                            and public engagement.
+                            experience as the technical operator for the
+                            Unitree G1 humanoid at the AI WAVE 2025
+                            exhibition, driving it through Apple Vision Pro
+                            teleoperation in live demos.
                         </p>
 
                         <h3>Exhibition Highlights</h3>
@@ -473,12 +456,12 @@
                                 analysis
                             </li>
                             <li>
-                                Cross-team coordination with Marketing and BD
-                                teams for seamless exhibition presentations
+                                Cross-team coordination with the Marketing
+                                and BD teams for the exhibition
                             </li>
                             <li>
-                                User interaction analysis and comprehensive
-                                feedback documentation for product development
+                                Logged user-interaction data for future RL
+                                work
                             </li>
                             <li>
                                 Technical setup and calibration of robot systems
@@ -507,9 +490,8 @@
                         </h2>
                         <p>
                             A critical aspect of the project involved designing
-                            and executing comprehensive testing frameworks to
-                            validate system performance and guide architectural
-                            decisions.
+                            and running tests to measure system performance
+                            and guide design decisions.
                         </p>
 
                         <h3>Testing Methodology</h3>
@@ -551,35 +533,27 @@
                             <article class="metric-card">
                                 <h4>Runtime Analysis</h4>
                                 <p>
-                                    Discovered that 95% of processing time
-                                    originated from LLM generation rather than
-                                    database operations, informing future
-                                    optimization strategies.
+                                    Profiling showed about 95% of latency
+                                    came from LLM generation rather than
+                                    database operations. This is a profiling
+                                    finding, not a speedup.
                                 </p>
                             </article>
 
                             <article class="metric-card">
-                                <h4>Accuracy Comparison</h4>
+                                <h4>Accuracy</h4>
                                 <p>
-                                    "One Tool" approach achieved superior F1
-                                    Score of 77.8% compared to 76.4% for the
-                                    "Three Tools" method.
-                                </p>
-                            </article>
-
-                            <article class="metric-card">
-                                <h4>Speed Optimization</h4>
-                                <p>
-                                    Overall runtime improved from 9,357ms to
-                                    9,194ms with the optimized architecture.
+                                    The cross-encoder re-ranker raised internal
+                                    eval F1 from 58% with the L2-distance
+                                    baseline to 77.8%.
                                 </p>
                             </article>
                         </section>
 
                         <h3>Multilingual Validation</h3>
                         <p>
-                            Conducted comprehensive testing using identical
-                            queries translated into English, Japanese, and
+                            Ran the same queries translated into English,
+                            Japanese, and
                             Traditional Chinese, confirming consistent
                             performance and relevant results across all
                             supported languages. This validation was crucial for
@@ -589,8 +563,8 @@
                         <h3>Future Enhancement Proposals</h3>
                         <p>
                             Based on performance analysis, I proposed
-                            implementing LangGraph with a verification agent
-                            architecture to critique and refine outputs from the
+                            implementing LangGraph with a verification
+                            agent to critique and refine outputs from the
                             generation agent, potentially reducing errors
                             without significant time costs. Additionally,
                             identified opportunities for implementing UV for
@@ -611,9 +585,8 @@
 
                         <h3>Engineering Philosophy</h3>
                         <p>
-                            My mentors taught me that engineering transcends
-                            mere coding—it's fundamentally about
-                            problem-solving. As they eloquently explained,
+                            My mentors taught me that engineering is more
+                            than coding. It is about problem-solving. As they eloquently explained,
                             "coding is just
                             描述事情的邏輯，是將邏輯具象化的工具" (coding is
                             merely describing logic and making logic concrete).
@@ -703,7 +676,7 @@
                                 <ul class="tech-stack">
                                     <li>Milvus Vector Database</li>
                                     <li>Docker Containerization</li>
-                                    <li>System Architecture</li>
+                                    <li>System Design</li>
                                     <li>Performance Optimization</li>
                                     <li>Cross-Collection Querying</li>
                                     <li>Database Connection Management</li>
@@ -714,7 +687,7 @@
                                 <h3>Security & Testing</h3>
                                 <ul class="tech-stack">
                                     <li>Prompt Injection Defense</li>
-                                    <li>Multi-LLM Architecture</li>
+                                    <li>Multi-LLM Pipelines</li>
                                     <li>Automated Security Testing</li>
                                     <li>YAML Configuration</li>
                                     <li>Vulnerability Assessment</li>
@@ -741,14 +714,9 @@
                         <p>
                             During the final weeks of the internship, I enhanced
                             the MCP server by migrating from stdio to
-                            streamable-http architecture, significantly
-                            improving calling efficiency and preparing the
-                            system for production-scale deployment.
-                            Additionally, I proposed using UV for enhanced
-                            Python environment management across the
-                            organization, demonstrating ongoing commitment to
-                            system optimization and developer experience
-                            improvements.
+                            streamable-http, which improved calling
+                            efficiency. I also proposed using UV for Python
+                            environment management across the team.
                         </p>
 
                         <p>

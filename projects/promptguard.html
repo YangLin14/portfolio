@@ -1,0 +1,161 @@
+<!-- TODO(Yang): confirm Ubitus is fine with this repo being public before this page goes live -->
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="PromptGuard - A prompt-injection testing tool built on utkusen's promptmap, with an Improver LLM that rewrites vulnerable system prompts. Built during a Ubitus internship." />
+        <title>PromptGuard | Fong-Yu (Yang) Lin</title>
+        <link rel="icon" type="image/jpeg" href="../assets/images/general/logo.webp" />
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="site-header">
+            <section class="container">
+                <a href="../index.html" class="logo">Fong-Yu Lin</a>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li>
+                            <a href="../index.html#experience">Experience</a>
+                        </li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode">☀️</button>
+            </section>
+        </header>
+
+        <main>
+            <header class="project-hero">
+                <section class="container">
+                    <h1>PromptGuard</h1>
+                    <p>
+                        A prompt-injection testing tool I built during my Ubitus
+                        internship on top of utkusen's open-source promptmap. A
+                        target LLM is attacked, a controller LLM judges each
+                        result, and an Improver LLM reads the failures and
+                        proposes a hardened system prompt.
+                    </p>
+                </section>
+            </header>
+
+            <article class="project-page-content">
+                <section class="container">
+                    <!-- What I Added Section -->
+                    <section class="project-section">
+                        <h2>What I added</h2>
+                        <section class="features-grid">
+                            <article>
+                                <h3>1. Improver LLM loop</h3>
+                                <ul>
+                                    <li>
+                                        🛠️ After a system prompt fails an attack
+                                        test, the Improver LLM reads the failed
+                                        cases and rewrites the prompt
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>2. Modular Python package</h3>
+                                <ul>
+                                    <li>
+                                        📦 Refactored the scanner from a script
+                                        into a Python package
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>3. UbiGPT provider</h3>
+                                <ul>
+                                    <li>
+                                        🔌 Added provider support for UbiGPT,
+                                        the company LLM, next to the existing
+                                        backends
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>4. Override-rule category</h3>
+                                <ul>
+                                    <li>
+                                        📋 Added an override-rule category; the
+                                        rule set spans 7 categories and 50+
+                                        rules
+                                    </li>
+                                </ul>
+                            </article>
+                        </section>
+                    </section>
+
+                    <!-- Use Section -->
+                    <section class="project-section">
+                        <h2>Use at Ubitus</h2>
+                        <p>
+                            I used PromptGuard to harden the system prompts
+                            across 5 internal LLM products.
+                        </p>
+                        <p>
+                            <strong
+                                ><a
+                                    href="https://github.com/YangLin14/Promptguard"
+                                    target="_blank" rel="noopener noreferrer"
+                                    >View the repo on GitHub &rarr;</a
+                                ></strong
+                            >
+                        </p>
+                    </section>
+
+                    <!-- Credit Section -->
+                    <section class="project-section">
+                        <h2>Credit</h2>
+                        <p>
+                            PromptGuard is built on
+                            <a
+                                href="https://github.com/utkusen/promptmap"
+                                target="_blank" rel="noopener noreferrer"
+                                >promptmap</a
+                            >
+                            by utkusen.
+                        </p>
+                    </section>
+
+                    <!-- Tech Stack Section -->
+                    <section class="project-section">
+                        <h2>Technology Stack</h2>
+                        <ul class="tech-stack">
+                            <li>Python</li>
+                            <li>LLMs</li>
+                            <li>Security</li>
+                            <li>YAML</li>
+                        </ul>
+                    </section>
+
+                    <a href="../index.html#projects" class="back-link"
+                        >&larr; Back to All Projects</a
+                    >
+                </section>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <section class="container footer-container">
+                <p>
+                    &copy; <span id="year"></span> Fong-Yu (Yang) Lin. All
+                    Rights Reserved.
+                </p>
+                <p id="location-time"></p>
+            </section>
+        </footer>
+
+        <script src="../script.js" defer></script>
+    </body>
+</html>

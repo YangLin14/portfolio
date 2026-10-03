@@ -49,8 +49,9 @@
                         <ul>
                             <li><a href="#overview">Overview</a></li>
                             <li><a href="#ground-up">Building From the Ground Up</a></li>
+                            <li><a href="#urkl">URKL T800</a></li>
                             <li><a href="#projects">Current Projects</a></li>
-                            <li><a href="#sim-to-real">The Sim-to-Real Gap</a></li>
+                            <li><a href="#parallel-build">Building in Parallel</a></li>
                             <li><a href="#team">Team & Robot</a></li>
                             <li><a href="#skills">Technologies & Tools</a></li>
                         </ul>
@@ -60,11 +61,10 @@
                 <article class="experience-content">
                     <p id="overview" class="experience-overview">
                         Triton Droids is a UC San Diego student team building a
-                        humanoid robot from the ground up — hardware and
+                        humanoid robot from the ground up, hardware and
                         software in parallel. I joined as an ML Team Member,
-                        working alongside the simulation and reinforcement
-                        learning sub-team to write the control policies that
-                        will eventually run on the physical robot.
+                        working with the simulation and reinforcement learning
+                        sub-team on the control policies.
                     </p>
 
                     <section id="ground-up">
@@ -76,9 +76,40 @@
                             reinforcement learning) writing the policies that
                             control the robot. Because both halves are moving
                             at once, the policies I write have to target a
-                            robot whose exact mechanical properties are still
-                            being finalized — there's no stable, fully-built
-                            platform to assume.
+                            robot whose exact mechanical properties are
+                            still being finalized. There is no stable,
+                            fully-built platform to assume.
+                        </p>
+                    </section>
+
+                    <section id="urkl">
+                        <h2>URKL T800</h2>
+                        <p>
+                            The club entered URKL (Ultimate Robot Knock-out
+                            Legend), EngineAI's humanoid combat league where
+                            every team uses the T800. The team passed the
+                            initial challenge round, and the project stopped
+                            before the physical stage in China.
+                        </p>
+                        <p>
+                            I built the training infrastructure for chaining
+                            combat skills inside a single mjlab tracking
+                            policy: a <code>MultiMotionLoader</code> and
+                            <code>MultiMotionCommand</code> that chain named
+                            reference clips (kick, dodge, punch) in one policy,
+                            with a closest-entry transition mode that picks the
+                            best entry frame in the next clip. I also built the
+                            BVH-to-training data path and wrote GPU training
+                            runbooks for Colab A100 and the UCSD SDSC cluster.
+                            No trained policy exists yet; this is training
+                            infrastructure.
+                        </p>
+                        <p>
+                            <strong
+                                ><a href="../projects/urkl-t800.html"
+                                    >Read the project page &rarr;</a
+                                ></strong
+                            >
                         </p>
                     </section>
 
@@ -86,19 +117,19 @@
                         <h2>Current Projects</h2>
                         <ul>
                             <li>
-                                <strong>Falling policy in MuJoCo</strong> —
-                                training a policy so the robot goes down
-                                safely and cleanly when it loses balance,
+                                <strong>Falling policy in MuJoCo</strong>:
+                                in progress. Training a policy so the robot
+                                goes down safely when it loses balance,
                                 combining imitation learning with
-                                reinforcement learning rather than relying on
-                                hand-tuned recovery heuristics.
+                                reinforcement learning. No results yet.
                             </li>
                             <li>
-                                <strong>Panda arm pick-and-place pipeline</strong>
-                                — a simulation pipeline for a Franka Panda arm
-                                performing pick-and-place tasks, used as a
-                                second track for testing manipulation policies
+                                <strong>Panda arm pick-and-place pipeline</strong>:
+                                in progress. A simulation pipeline for a Franka
+                                Panda arm performing pick-and-place tasks, as a
+                                second track for manipulation policies
                                 independent of the humanoid's locomotion work.
+                                No results yet.
                             </li>
                             <li>
                                 <strong
@@ -106,27 +137,26 @@
                                         >Humanoid Teleop</a
                                     ></strong
                                 >
-                                — a wearable-IMU lower-body teleoperation
+                                : a wearable-IMU lower-body teleoperation
                                 pipeline built with a 6-person team as our
                                 UCSD CSE 145 final project, covering pose
-                                reconstruction, retargeting, and PPO motion
-                                tracking validated in IsaacLab and MuJoCo.
+                                reconstruction, retargeting, and a PPO
+                                motion-tracking environment in IsaacLab with a
+                                handoff to MuJoCo. Simulation only.
                             </li>
                         </ul>
                     </section>
 
-                    <section id="sim-to-real">
-                        <h2>The Sim-to-Real Gap</h2>
+                    <section id="parallel-build">
+                        <h2>Building in Parallel</h2>
                         <p>
-                            What makes this different from most school
-                            robotics projects is that the hardware team is
-                            building the physical robot at the same time the
-                            ML team is writing the policies for it. The
-                            sim-to-real gap isn't an abstract case study read
-                            about in a paper — it's a concrete, recurring
-                            problem that shows up in nearly every team
-                            meeting, from mismatched mass/inertia estimates to
-                            actuator limits the simulator doesn't model yet.
+                            The hardware team is building the physical robot at
+                            the same time the ML team is writing the policies
+                            for it. That shows up in nearly every team meeting,
+                            from mismatched mass and inertia estimates to
+                            actuator limits the simulator does not model yet.
+                            Everything I have worked on so far runs in
+                            simulation.
                         </p>
                     </section>
 
@@ -163,7 +193,9 @@
                             <li>Imitation Learning</li>
                             <li>Franka Panda Arm</li>
                             <li>Robot Simulation</li>
-                            <li>Sim-to-Real Transfer</li>
+                            <li>mjlab</li>
+                            <li>IsaacLab</li>
+                            <li>Holosoma</li>
                         </ul>
                     </section>
                     <a href="../index.html#experience" class="back-link"

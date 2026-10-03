@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="URKL T800 Multi-Motion Tracking - Training infrastructure for chaining combat skills inside a single mjlab tracking policy on EngineAI's T800 humanoid, built for Triton Droids." />
+        <title>URKL T800 Multi-Motion Tracking | Fong-Yu (Yang) Lin</title>
+        <link rel="icon" type="image/jpeg" href="../assets/images/general/logo.webp" />
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="site-header">
+            <section class="container">
+                <a href="../index.html" class="logo">Fong-Yu Lin</a>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li>
+                            <a href="../index.html#experience">Experience</a>
+                        </li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode">☀️</button>
+            </section>
+        </header>
+
+        <main>
+            <header class="project-hero">
+                <section class="container">
+                    <h1>URKL T800 Multi-Motion Tracking</h1>
+                    <p>
+                        Triton Droids entered URKL (Ultimate Robot Knock-out
+                        Legend), EngineAI's humanoid combat league where every
+                        team uses the same T800 humanoid. Our team passed the
+                        initial challenge round. The project stopped before the
+                        physical stage in China. I built the training
+                        infrastructure for chaining combat skills inside a
+                        single tracking policy in mjlab.
+                    </p>
+                </section>
+            </header>
+
+            <article class="project-page-content">
+                <section class="container">
+                    <!-- TODO(Yang): add image -->
+
+                    <!-- What I Built Section -->
+                    <section class="project-section">
+                        <h2>What I built</h2>
+                        <section class="features-grid">
+                            <article>
+                                <h3>1. MultiMotionCommand</h3>
+                                <ul>
+                                    <li>
+                                        🧩 Loads several named reference clips
+                                        (kick, dodge, punch) and steps through
+                                        a user-scripted sequence inside one
+                                        policy's training
+                                    </li>
+                                    <li>
+                                        🔁 The original single-motion path is
+                                        unchanged
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>2. Closest-entry transitions</h3>
+                                <ul>
+                                    <li>
+                                        🎯 When one clip ends, the command
+                                        searches the next clip for the frame
+                                        closest to the current state instead of
+                                        restarting at frame 0
+                                    </li>
+                                    <li>
+                                        🧪 The policy therefore trains on
+                                        realistic transitions
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>3. Train, play, and runner support</h3>
+                                <ul>
+                                    <li>
+                                        ⚙️ Multi-motion configs wired through
+                                        the train, play, and runner scripts
+                                    </li>
+                                    <li>✅ 23 passing tests</li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>4. BVH-to-training data path</h3>
+                                <ul>
+                                    <li>
+                                        🔧 Fixed the Holosoma retargeting setup
+                                        (BVH unit scale, initial-pose
+                                        selection, dependencies)
+                                    </li>
+                                    <li>
+                                        📦 Converted retargeted qpos into
+                                        50 fps mjlab tracking files for kick,
+                                        dodge, and warmup motions
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>5. GPU training runbooks</h3>
+                                <ul>
+                                    <li>
+                                        📘 Runbooks so teammates could train on
+                                        Colab A100 and the UCSD SDSC cluster
+                                    </li>
+                                </ul>
+                            </article>
+                        </section>
+                    </section>
+
+                    <!-- Status and Limits Section -->
+                    <section class="project-section">
+                        <h2>Status and limits</h2>
+                        <p>
+                            The pipeline initializes and parses end to end. A
+                            trained multi-skill policy is the next step. The
+                            sequence is scripted by the user; the robot does not
+                            choose skills itself. Closest-entry selection
+                            improves the reference but does not guarantee a
+                            physically stable transition; that has to come from
+                            training.
+                        </p>
+                        <!-- TODO(Yang): add training results, reward curves, and a sim video here once a policy is trained -->
+                    </section>
+
+                    <!-- Credit Section -->
+                    <section class="project-section">
+                        <h2>Credit</h2>
+                        <p>
+                            Original Kimodo BVH-to-T800 retargeting support was
+                            written by a teammate. Retargeting builds on
+                            Holosoma (Amazon FAR), and the training stack is
+                            mjlab.
+                        </p>
+                    </section>
+
+                    <!-- Tech Stack Section -->
+                    <section class="project-section">
+                        <h2>Technology Stack</h2>
+                        <ul class="tech-stack">
+                            <li>Python</li>
+                            <li>mjlab</li>
+                            <li>MuJoCo</li>
+                            <li>PPO</li>
+                            <li>Holosoma</li>
+                            <li>BVH</li>
+                            <li>Slurm</li>
+                        </ul>
+                    </section>
+
+                    <a href="../index.html#projects" class="back-link"
+                        >&larr; Back to All Projects</a
+                    >
+                </section>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <section class="container footer-container">
+                <p>
+                    &copy; <span id="year"></span> Fong-Yu (Yang) Lin. All
+                    Rights Reserved.
+                </p>
+                <p id="location-time"></p>
+            </section>
+        </footer>
+
+        <script src="../script.js" defer></script>
+    </body>
+</html>

@@ -1656,6 +1656,66 @@ code {
     margin-bottom: 1rem;
 }
 
+/* Square sim rollout videos */
+.demo-video.demo-video-square {
+    max-width: 420px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Results table */
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0 1rem;
+    font-size: 0.95rem;
+}
+
+.results-table th,
+.results-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.results-table thead th {
+    color: var(--accent-color);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.results-table tbody th {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.results-table tbody tr:last-child th,
+.results-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-note {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 480px) {
+    .results-table {
+        font-size: 0.85rem;
+    }
+
+    .results-table th,
+    .results-table td {
+        padding: 0.5rem;
+    }
+}
+
 /* Skills Section */
 .skills-categories {
     display: grid;

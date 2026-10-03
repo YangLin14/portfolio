@@ -42,7 +42,7 @@
                         language into robot goals. Gemini 2.5 Flash converts
                         instructions into 3D goals, and a SAC+HER policy on
                         FetchPush-v4 executes them. I was first author and tech
-                        lead on a 4-person team.
+                        lead on a 5-person team.
                     </p>
                 </section>
             </header>
@@ -53,21 +53,30 @@
                     <section class="project-section">
                         <h2>Setup</h2>
                         <p>
-                            The pipeline has two stages. An instruction in
-                            natural language goes to Gemini 2.5 Flash, which
-                            returns a 3D goal position. That goal is handed to a
-                            SAC+HER policy trained on FetchPush-v4, which pushes
-                            the block toward it.
+                            The pipeline is deliberately decoupled. An
+                            instruction in natural language goes to Gemini 2.5
+                            Flash once, which returns a 3D goal. That goal is
+                            handed to a SAC+HER policy trained on FetchPush-v4,
+                            which pushes the cube toward it. Both the grounder
+                            and the policy read the same workspace definition,
+                            so a failure can be traced to one stage or the
+                            other. A regex grounder runs as a baseline to show
+                            which tiers need a language model at all.
+                        </p>
+                        <p>
+                            The workspace is the FetchPush goal-sampling region,
+                            x in [1.19, 1.49] and y in [0.60, 0.90], with the
+                            robot-frame axis convention written into the prompt
+                            so the model does not have to infer it.
                         </p>
                         <p>
                             <strong
                                 ><a
-                                    href="https://github.com/YangLin14/LLM-FetchPush"
+                                    href="https://github.com/YangLin14/Talk-to-Robot"
                                     target="_blank" rel="noopener noreferrer"
                                     >View the repo on GitHub &rarr;</a
                                 ></strong
                             >
-                            (it includes a 7-task onboarding curriculum)
                         </p>
                         <p><em>Course project paper, not peer reviewed.</em></p>
                     </section>
@@ -76,59 +85,220 @@
                     <section class="project-section">
                         <h2>Benchmark</h2>
                         <p>
-                            We wrote a five-tier benchmark that holds the robot
-                            and the policy fixed and varies only how abstract
-                            the instruction is.
+                            Five tiers, 20 instructions each, 100 in total. The
+                            robot and the policy are fixed; only the abstraction
+                            level of the instruction changes.
                         </p>
-                        <ul>
-                            <li>
-                                <strong>T0:</strong> literal coordinates, given
-                                directly in the instruction
-                            </li>
-                            <li>
-                                <strong>T4:</strong> abstract intent
-                            </li>
-                        </ul>
-                        <!-- TODO(Yang): add the exact wording for tiers T1, T2, and T3 from the report -->
+                        <section class="features-grid">
+                            <article>
+                                <h3>T0: literal coordinates</h3>
+                                <ul>
+                                    <li>"push to (1.30, 0.85)"</li>
+                                    <li>No context needed</li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>T1: named regions</h3>
+                                <ul>
+                                    <li>"push to the upper-left corner"</li>
+                                    <li>Resolved against a region table</li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>T2: metric offsets</h3>
+                                <ul>
+                                    <li>"push it 5 cm to the right"</li>
+                                    <li>
+                                        Needs the cube's current position as
+                                        context
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>T3: object-relative</h3>
+                                <ul>
+                                    <li>"push it next to the marker"</li>
+                                    <li>
+                                        Needs reference-object positions as
+                                        context
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>T4: abstract intent</h3>
+                                <ul>
+                                    <li>"get it out of the way"</li>
+                                    <li>
+                                        No spatial terms; acceptance regions
+                                        were annotated by hand and frozen before
+                                        the runs
+                                    </li>
+                                </ul>
+                            </article>
+                        </section>
                     </section>
 
                     <!-- Findings Section -->
                     <section class="project-section">
                         <h2>Findings</h2>
                         <p>
-                            Accuracy drops roughly monotonically from T0 to T4,
-                            and each tier fails in its own way.
+                            Grounding success rate by tier and prompt variant,
+                            20 instructions per tier.
                         </p>
+                        <div class="table-scroll">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Tier</th>
+                                    <th scope="col">Zero-shot</th>
+                                    <th scope="col">Few-shot</th>
+                                    <th scope="col">CoT</th>
+                                    <th scope="col">Regex baseline</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">T0</th>
+                                    <td>100%</td>
+                                    <td>100%</td>
+                                    <td>100%</td>
+                                    <td>100%</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">T1</th>
+                                    <td>100%</td>
+                                    <td>100%</td>
+                                    <td>100%</td>
+                                    <td>100%</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">T2</th>
+                                    <td>40%</td>
+                                    <td>45%</td>
+                                    <td>65%</td>
+                                    <td>100%</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">T3</th>
+                                    <td>0%</td>
+                                    <td>0%</td>
+                                    <td>5%</td>
+                                    <td>n/a</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">T4</th>
+                                    <td>0%</td>
+                                    <td>0%</td>
+                                    <td>0%</td>
+                                    <td>n/a</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <p class="table-note">
+                            T3 and T4 use the uniform 5 cm acceptance radius
+                            described below. The regex grounder returns no
+                            answer on T3 and T4 by design, which is the point of
+                            the baseline: everything through T2 is parseable
+                            without a language model, and the tiers that need
+                            one are the tiers the language model gets wrong.
+                        </p>
+                        <p>Each tier fails in its own way:</p>
                         <ul>
                             <li>
-                                <strong>T2:</strong> hallucinates goals outside
-                                the robot's workspace
+                                <strong>T2</strong> hallucinates goals outside
+                                the workspace. In the few-shot run, 8 of 20
+                                predictions were out of bounds. CoT prompting
+                                fixes the out-of-bounds problem and then places
+                                goals in spots the policy struggles to reach, so
+                                end-to-end success does not improve as much as
+                                the grounding number suggests.
                             </li>
                             <li>
-                                <strong>T3:</strong> a systematic magnitude
-                                offset of about 6 cm
+                                <strong>T3</strong> has a systematic offset of
+                                about 6 cm on the y-axis. It is not noise: the
+                                distance is 0.0600 m on nearly every one of the
+                                20 instructions.
                             </li>
                             <li>
-                                <strong>T4:</strong> under-specifies the intent,
-                                so the goal is only loosely related to what was
-                                asked
+                                <strong>T4</strong> under-specifies the intent.
+                                Mean error is about 19 cm. The model treats "out
+                                of the way" as "pick a corner," so success is
+                                close to a coin flip on which corner it picks.
                             </li>
                         </ul>
-                        <!-- TODO(Yang): add a figure (accuracy by tier) and a link to the final report PDF if you want it public -->
+                        <!-- TODO(Yang): the success_rates.png in the repo still shows the pre-audit T3 numbers; regenerate it at the uniform 5 cm radius before putting a figure here. Also add the final report PDF link if you want it public. -->
+                    </section>
+
+                    <!-- Rollouts Section -->
+                    <section id="gallery" class="project-section">
+                        <h2>Rollouts</h2>
+                        <section class="exhibition-media">
+                            <article class="exhibition-video">
+                                <h4>T3: "push the red cube to the right side of the blue cube"</h4>
+                                <video
+                                    controls
+                                    muted
+                                    playsinline
+                                    preload="metadata"
+                                    poster="../assets/images/projects/talk-to-robot/t3_rollout.webp"
+                                    class="demo-video demo-video-square"
+                                >
+                                    <source
+                                        src="../assets/videos/talk_to_robot_t3.mp4"
+                                        type="video/mp4"
+                                    />
+                                </video>
+                                <p class="media-caption">
+                                    Gemini resolves the reference object into a
+                                    goal and the policy pushes toward it. The
+                                    inset is a top-down map of the workspace.
+                                    Only one cube is physically simulated; the
+                                    second is a visual reference marker.
+                                </p>
+                            </article>
+                            <article class="exhibition-video">
+                                <h4>T4: an abstract instruction</h4>
+                                <video
+                                    controls
+                                    muted
+                                    playsinline
+                                    preload="metadata"
+                                    class="demo-video demo-video-square"
+                                >
+                                    <source
+                                        src="../assets/videos/talk_to_robot_t4.mp4"
+                                        type="video/mp4"
+                                    />
+                                </video>
+                                <p class="media-caption">
+                                    At T4 the model picks a workspace corner and
+                                    commits to it, which is where most of the
+                                    19 cm mean error comes from.
+                                </p>
+                            </article>
+                        </section>
                     </section>
 
                     <!-- The Audit Section -->
                     <section class="project-section">
                         <h2>The audit</h2>
                         <p>
-                            An early version of the results showed accuracy
-                            climbing back up at T3, which did not fit anything
-                            else we saw. I audited the evaluation code and found
-                            the cause: the success threshold was not consistent
-                            across tiers, 8 cm in one place and 5 cm in another.
-                            The rebound was an artifact of the looser threshold.
-                            With one threshold everywhere, the trend is
-                            monotonic.
+                            An early version of the results showed T3 at 100%
+                            after T2 dipped to 45%, which did not fit anything
+                            else we saw. The cause was the acceptance radius:
+                            T3 was being scored at 8 cm while the other tiers
+                            used 5 cm, and the T3 predictions sit at about
+                            6 cm, right in between. Re-scoring every saved run
+                            at a uniform 5 cm radius flipped 20 of 20 T3
+                            instructions from pass to fail, and the rebound
+                            disappeared.
+                        </p>
+                        <p>
+                            The reclassification is kept in the repo as
+                            <code>results/uniform_radius_reclassification.md</code>
+                            so the original and corrected numbers sit side by
+                            side.
                         </p>
                     </section>
 
@@ -136,8 +306,11 @@
                     <section class="project-section">
                         <h2>Policy</h2>
                         <p>
-                            The SAC+HER policy on FetchPush-v4 reaches about 95%
-                            success at 600k steps and about 100% at 700k.
+                            The SAC+HER policy on FetchPush-v4 reaches 95%
+                            success at about 600k timesteps and about 100% at
+                            700k, then settles back to around 94% by 890k. On
+                            T0 and T1, where grounding is exact, end-to-end
+                            success tracks the policy at 93% to 98%.
                         </p>
                     </section>
 
@@ -145,11 +318,12 @@
                     <section class="project-section">
                         <h2>My Role</h2>
                         <p>
-                            I was first author and tech lead on a 4-person team
-                            with Joseph, Nasser, and Waleed. I led the topic
-                            pivot after our professor's feedback, wrote the
-                            introduction and conclusion, and ran the audit that
-                            caught the false T3 rebound.
+                            I was first author and tech lead on a 5-person team
+                            with Aditya Jadhav, Joseph Warzybok-McKenney,
+                            Nasser Al Nasser, and Waleed Alghaithi. I led the
+                            topic pivot after our professor's feedback, wrote
+                            the introduction and conclusion, and ran the audit
+                            that caught the false T3 rebound.
                         </p>
                     </section>
 

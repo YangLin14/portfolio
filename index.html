@@ -5,18 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Fong-Yu (Yang) Lin — Software Developer & AI Engineer. UCSD Computer Science student building impactful applications in AI, robotics, and mobile development."
+      content="Robot learning and ML engineer. UC San Diego M.S. CS student working on humanoid motion tracking, retargeting, and RL in simulation."
     />
     <meta
       property="og:title"
-      content="Fong-Yu (Yang) Lin | Software Developer"
+      content="Fong-Yu (Yang) Lin | Robot Learning Engineer"
     />
     <meta
       property="og:description"
-      content="Software Developer & AI Engineer specializing in AI applications, robotics, and mobile development."
+      content="Robot learning and ML engineer. UC San Diego M.S. CS student working on humanoid motion tracking, retargeting, and RL in simulation."
     />
     <meta property="og:type" content="website" />
-    <title>Fong-Yu (Yang) Lin | Software Developer</title>
+    <title>Fong-Yu (Yang) Lin | Robot Learning Engineer</title>
     <link rel="icon" type="image/jpeg" href="assets/images/general/logo.webp" />
     <link rel="stylesheet" href="style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -62,11 +62,12 @@
     <main id="main-content">
       <section id="hero" class="hero-section">
         <div class="hero-content">
-          <h1 class="hero-headline">Software Developer & AI Engineer</h1>
+          <h1 class="hero-headline">Robot Learning & ML Engineer</h1>
           <p class="hero-subheadline">
-            Recent UC San Diego Bachelor's graduate, specializing in Computer
-            Science. Passionate about building impactful applications with a
-            focus on AI applications and robot learning.
+            M.S. Computer Science student at UC San Diego (B.S. 2026, M.S.
+            June 2027). I build robot learning systems: humanoid motion
+            tracking, motion retargeting, and RL training pipelines. Looking
+            for full-time robotics roles starting Summer 2027.
           </p>
           <div class="hero-actions">
             <a href="#projects" class="cta-button">View My Work</a>
@@ -89,7 +90,7 @@
               </li>
               <li>
                 <a
-                  href="https://drive.google.com/file/d/1QwXjZAsUs_i0DefNahq9nvKLk7u1oYnR/view?usp=sharing"
+                  href="https://drive.google.com/file/d/1_vHFwatwEMVyo5gf2-5Hiuq1J9DGMkBI/view?usp=sharing"
                   target="_blank"
                   rel="noopener noreferrer"
                   >Resume</a
@@ -110,27 +111,30 @@
           <article class="about-text">
             <h2>About Me</h2>
             <p>
-              I moved from Taiwan to the US in 2019 and began my coding journey
-              at UCSD in 2022. I enjoy exploring the intersection of AI and
+              I moved from Taiwan to the US in 2019 and started coding
+              at UCSD in 2022. I enjoy working at the intersection of AI and
               robotics and love building hands-on projects that solve real-world
-              problems. In the summer of 2025, I interned at Ubitus, where I
-              develop MCP tools for the company's LLM - UbiGPT. I've also
-              contributed to robotics demonstrations in Taiwan's largest AI
-              exhibition - AI WAVE. In my free time, I enjoy developing personal
+              problems. In summer 2025 I interned at Ubitus in Taipei, where
+              I built an MCP retrieval server for the company LLM and operated
+              a Unitree G1 humanoid in live demos at AI WAVE. Since then my
+              work has moved fully into robot learning: a ping-pong forehand
+              for the Unitree G1 and motion tracking for EngineAI's T800 with
+              Triton Droids, a wearable IMU teleoperation system, and LLM-to-robot
+              goal grounding. In my free time, I enjoy developing personal
               projects, playing badminton, and exploring the latest in tech.
             </p>
             <h3>My Tech Stack</h3>
             <ul class="tech-stack">
-              <li>C++</li>
               <li>Python</li>
+              <li>PyTorch</li>
+              <li>MuJoCo</li>
+              <li>mjlab</li>
+              <li>IsaacLab</li>
+              <li>C++</li>
+              <li>Docker</li>
+              <li>Linux</li>
+              <li>vLLM</li>
               <li>React</li>
-              <li>Flutter</li>
-              <li>Dart</li>
-              <li>Firebase</li>
-              <li>AWS</li>
-              <li>HTML5</li>
-              <li>CSS3</li>
-              <li>JavaScript</li>
             </ul>
           </article>
         </figure>
@@ -140,29 +144,140 @@
         <section class="container">
           <h2>Featured Projects</h2>
           <ul class="projects-grid">
-            <!-- NewLedger Project -->
+            <!-- Unitree G1 Ping-Pong Forehand -->
             <li>
               <article class="project-card">
                 <img
-                  src="assets/images/projects/newledger/NewLedger0.webp"
-                  alt="NewLedger App"
+                  src="assets/images/projects/g1-pingpong/forehand_eval.webp"
+                  alt="Unitree G1 humanoid with a racket at a ping-pong table in MuJoCo"
                   class="project-image"
                   loading="lazy"
                 />
                 <section class="project-content">
-                  <h3>NewLedger - Expense Tracker</h3>
+                  <h3>Unitree G1 Ping-Pong Forehand</h3>
                   <p>
-                    A cross-platform financial management app with real-time
-                    expense tracking, receipt scanning via ML Kit, and
-                    collaborative expense splitting for groups.
+                    RL whole-body policy for a cross-court forehand on the
+                    Unitree G1, built on HOPE with Triton Droids. In MuJoCo:
+                    100% hits, 80% legal returns, 42% in the target zone.
                   </p>
                   <ul class="project-tags">
-                    <li class="framework featured">Flutter</li>
-                    <li class="database">Firebase</li>
-                    <li class="tech">ML Kit</li>
-                    <li class="language">Swift</li>
+                    <li class="tech featured">IsaacLab</li>
+                    <li class="tech">MuJoCo</li>
+                    <li class="tech">PPO</li>
+                    <li class="tool">Slurm</li>
                   </ul>
-                  <a href="projects/newledger.html" class="project-link"
+                  <a href="projects/g1-pingpong.html" class="project-link"
+                    >Learn More &rarr;</a
+                  >
+                </section>
+              </article>
+            </li>
+            <!-- URKL T800 Multi-Motion Tracking -->
+            <li>
+              <article class="project-card">
+                <img
+                  src="assets/images/projects/urkl-t800/kick_dodge_punch.webp"
+                  alt="EngineAI T800 humanoid tracking a combat motion in the mjlab viewer"
+                  class="project-image"
+                  loading="lazy"
+                />
+                <section class="project-content">
+                  <h3>URKL T800 Multi-Motion Tracking</h3>
+                  <p>
+                    One mjlab policy that chains kick, dodge, and punch on
+                    EngineAI's T800 humanoid, with moves picked live in the
+                    viewer. Built for Triton Droids' URKL entry.
+                  </p>
+                  <ul class="project-tags">
+                    <li class="tech featured">mjlab</li>
+                    <li class="tech">MuJoCo</li>
+                    <li class="tech">PPO</li>
+                    <li class="tool">Holosoma</li>
+                  </ul>
+                  <a href="projects/urkl-t800.html" class="project-link"
+                    >Learn More &rarr;</a
+                  >
+                </section>
+              </article>
+            </li>
+            <!-- Humanoid Robot Teleoperation Project -->
+            <li>
+              <article class="project-card">
+                <img
+                  src="assets/images/projects/teleop/final demo setup.webp"
+                  alt="Humanoid Robot Teleoperation final demo setup"
+                  class="project-image"
+                  loading="lazy"
+                />
+                <section class="project-content">
+                  <h3>Humanoid Robot Teleoperation</h3>
+                  <p>
+                    Wearable IMU teleoperation for a custom 10-DOF humanoid. I
+                    built the live retargeting stage and the motion-data path
+                    into IsaacLab training. 6-person CSE 145 team.
+                  </p>
+                  <ul class="project-tags">
+                    <li class="tech featured">IsaacLab</li>
+                    <li class="tech">MuJoCo</li>
+                    <li class="tool">Holosoma</li>
+                    <li class="language">Python</li>
+                  </ul>
+                  <a href="projects/teleoperation.html" class="project-link"
+                    >Learn More &rarr;</a
+                  >
+                </section>
+              </article>
+            </li>
+            <!-- LLM Spatial Grounding (Talk-to-Robot) -->
+            <li>
+              <article class="project-card">
+                <img
+                  src="assets/images/projects/talk-to-robot/t3_rollout.webp"
+                  alt="FetchPush simulation with a top-down workspace map"
+                  class="project-image"
+                  loading="lazy"
+                />
+                <section class="project-content">
+                  <h3>LLM Spatial Grounding (Talk-to-Robot)</h3>
+                  <p>
+                    How LLMs fail at turning language into robot goals,
+                    measured across five levels of instruction abstraction on a
+                    SAC+HER manipulation policy.
+                  </p>
+                  <ul class="project-tags">
+                    <li class="tech featured">MuJoCo</li>
+                    <li class="tech">SAC+HER</li>
+                    <li class="tech">Gemini</li>
+                    <li class="language">Python</li>
+                  </ul>
+                  <a href="projects/talk-to-robot.html" class="project-link"
+                    >Learn More &rarr;</a
+                  >
+                </section>
+              </article>
+            </li>
+            <!-- PromptGuard -->
+            <li>
+              <article class="project-card">
+                <div
+                  class="project-image project-image-placeholder"
+                  aria-hidden="true"
+                >
+                  <span class="project-image-placeholder-text">PromptGuard</span>
+                </div>
+                <section class="project-content">
+                  <h3>PromptGuard</h3>
+                  <p>
+                    Prompt-injection testing tool built on promptmap, with an
+                    Improver LLM that rewrites vulnerable system prompts. Used
+                    on 5 internal LLM products at Ubitus.
+                  </p>
+                  <ul class="project-tags">
+                    <li class="language featured">Python</li>
+                    <li class="tech">LLMs</li>
+                    <li class="tool">Security</li>
+                  </ul>
+                  <a href="projects/promptguard.html" class="project-link"
                     >Learn More &rarr;</a
                   >
                 </section>
@@ -196,30 +311,29 @@
                 </section>
               </article>
             </li>
-            <!-- Humanoid Robot Teleoperation Project -->
+            <!-- NewLedger Project -->
             <li>
               <article class="project-card">
                 <img
-                  src="assets/images/projects/teleop/final demo setup.webp"
-                  alt="Humanoid Robot Teleoperation final demo setup"
+                  src="assets/images/projects/newledger/NewLedger0.webp"
+                  alt="NewLedger App"
                   class="project-image"
                   loading="lazy"
                 />
                 <section class="project-content">
-                  <h3>Humanoid Robot Teleoperation</h3>
+                  <h3>NewLedger - Expense Tracker</h3>
                   <p>
-                    A real-time teleoperation system mapping human
-                    lower-body motion to humanoid robot leg commands via
-                    wearable IMUs and pose estimation, with RL policies
-                    trained in IsaacLab and validated in MuJoCo.
+                    A cross-platform financial management app with real-time
+                    expense tracking, receipt scanning via ML Kit, and
+                    collaborative expense splitting for groups.
                   </p>
                   <ul class="project-tags">
-                    <li class="tech featured">IsaacLab</li>
-                    <li class="tech">MuJoCo</li>
-                    <li class="language">Python</li>
-                    <li class="tool">Jetson</li>
+                    <li class="framework featured">Flutter</li>
+                    <li class="database">Firebase</li>
+                    <li class="tech">ML Kit</li>
+                    <li class="language">Swift</li>
                   </ul>
-                  <a href="projects/teleoperation.html" class="project-link"
+                  <a href="projects/newledger.html" class="project-link"
                     >Learn More &rarr;</a
                   >
                 </section>
@@ -242,8 +356,8 @@
                     secure authentication and unlimited card creation.
                   </p>
                   <ul class="project-tags">
-                    <li class="framework">NextJS</li>
-                    <li class="tech featured">GroqAI</li>
+                    <li class="framework">Next.js</li>
+                    <li class="tech featured">Groq</li>
                     <li class="database">Firebase</li>
                     <li class="tool">Stripe</li>
                   </ul>
@@ -253,195 +367,201 @@
                 </section>
               </article>
             </li>
-            <!-- ListVaults Project -->
-            <li>
-              <article class="project-card">
-                <img
-                  src="assets/images/projects/listvaults/listvault_logo.webp"
-                  alt="ListVaults Project"
-                  class="project-image"
-                  loading="lazy"
-                />
-                <section class="project-content">
-                  <h3>ListVaults - Watchlist Tracker</h3>
-                  <p>
-                    A comprehensive website for managing and tracking various
-                    watch lists (e.g., anime, drama) with dedicated "to-watch"
-                    and "watched" sections to improve organization.
-                  </p>
-                  <ul class="project-tags">
-                    <li class="framework">NextJS</li>
-                    <li class="language">JavaScript</li>
-                    <li class="database">Firebase</li>
-                  </ul>
-                  <a href="projects/listvaults.html" class="project-link"
-                    >Learn More &rarr;</a
-                  >
-                </section>
-              </article>
-            </li>
-            <!-- PlanMyTrip Project -->
-            <li>
-              <article class="project-card">
-                <img
-                  src="assets/images/projects/planmytrip/planmytrip_logo.webp"
-                  alt="PlanMyTrip Project"
-                  class="project-image"
-                  loading="lazy"
-                />
-                <section class="project-content">
-                  <h3>PlanMyTrip - AI Chatbot</h3>
-                  <p>
-                    An AI-powered platform to simplify travel planning with
-                    tailored recommendations, personalized itineraries, packing
-                    checklists, and essential travel tips.
-                  </p>
-                  <ul class="project-tags">
-                    <li class="framework">ReactJS</li>
-                    <li class="framework">NextJS</li>
-                    <li class="tech featured">Groq AI</li>
-                  </ul>
-                  <a href="projects/planmytrip.html" class="project-link"
-                    >Learn More &rarr;</a
-                  >
-                </section>
-              </article>
-            </li>
-            <!-- Arduino Car Project -->
-            <li>
-              <article class="project-card">
-                <img
-                  src="assets/images/projects/joystickcar/car2.webp"
-                  alt="Arduino Car Project"
-                  class="project-image"
-                  loading="lazy"
-                />
-                <section class="project-content">
-                  <h3>Joystick Controlled Car</h3>
-                  <p>
-                    A 3D-printed, Arduino-powered race car controlled via a
-                    joystick. Led a team in design, 3D printing, wiring,
-                    soldering, and programming.
-                  </p>
-                  <ul class="project-tags">
-                    <li class="tech featured">Arduino</li>
-                    <li class="language">C</li>
-                    <li class="tool">Hardware</li>
-                    <li class="tool">3D Printing</li>
-                  </ul>
-                  <a href="projects/joystickcar.html" class="project-link"
-                    >Learn More &rarr;</a
-                  >
-                </section>
-              </article>
-            </li>
-            <!-- Personal Website Project -->
-            <li>
-              <article class="project-card">
-                <img
-                  src="assets/images/general/logo.webp"
-                  alt="Personal Website Project"
-                  class="project-image"
-                  loading="lazy"
-                />
-                <section class="project-content">
-                  <h3>Personal Landing Page</h3>
-                  <p>
-                    Created a personal landing page to catalog all of my
-                    projects and professional experiences, hosted on GitHub
-                    Pages.
-                  </p>
-                  <ul class="project-tags">
-                    <li class="language">HTML</li>
-                    <li class="language">CSS</li>
-                  </ul>
-                  <a href="projects/landing.html" class="project-link"
-                    >Learn More &rarr;</a
-                  >
-                </section>
-              </article>
-            </li>
-            <!-- OrderEase Project -->
-            <li>
-              <article class="project-card">
-                <img
-                  src="assets/images/experience/frugal-hub/frugalpic03.webp"
-                  alt="OrderEase Project"
-                  class="project-image"
-                  loading="lazy"
-                />
-                <section class="project-content">
-                  <h3>OrderEase Mobile App</h3>
-                  <p>
-                    Developed an app that allows users to order food from a
-                    restaurant menu and track the order status and then generate
-                    corresponding ordering sentences.
-                  </p>
-                  <ul class="project-tags">
-                    <li class="framework featured">Flutter</li>
-                    <li class="tool">Figma</li>
-                    <li class="database">Firebase</li>
-                    <li class="language">Dart</li>
-                  </ul>
-                  <a href="projects/orderease.html" class="project-link"
-                    >Learn More &rarr;</a
-                  >
-                </section>
-              </article>
-            </li>
-            <!-- Movable Hand Project -->
-            <li>
-              <article class="project-card">
-                <img
-                  src="assets/images/projects/movable-hand/hand0.webp"
-                  alt="Movable Hand Project"
-                  class="project-image"
-                  loading="lazy"
-                />
-                <section class="project-content">
-                  <h3>Movable Hand</h3>
-                  <p>
-                    Created a hand that is designed to move in like a real human
-                    hand and help grabbing small things like phones, rings, or
-                    car keys.
-                  </p>
-                  <ul class="project-tags">
-                    <li class="tool featured">Fusion360</li>
-                    <li class="tool">3D Printing</li>
-                  </ul>
-                  <a href="projects/movable-hand.html" class="project-link"
-                    >Learn More &rarr;</a
-                  >
-                </section>
-              </article>
-            </li>
-            <!-- Rube-Goldberg Machine Project -->
-            <li>
-              <article class="project-card">
-                <img
-                  src="assets/images/projects/rube-goldberg/rube2.webp"
-                  alt="Rube-Goldberg Machine Project"
-                  class="project-image"
-                  loading="lazy"
-                />
-                <section class="project-content">
-                  <h3>Rube-Goldberg Machine</h3>
-                  <p>
-                    Designed 6 versions of a Rube-Goldberg machine using
-                    different sensors and microcontrollers, with a final design
-                    requiring only a single push-button interface.
-                  </p>
-                  <ul class="project-tags">
-                    <li class="tech featured">Arduino</li>
-                    <li class="tool">Hardware Design</li>
-                  </ul>
-                  <a href="projects/rube-goldberg.html" class="project-link"
-                    >Learn More &rarr;</a
-                  >
-                </section>
-              </article>
-            </li>
           </ul>
+
+          <details class="other-projects">
+            <summary>Other Projects</summary>
+            <ul class="projects-grid">
+              <!-- ListVaults Project -->
+              <li>
+                <article class="project-card">
+                  <img
+                    src="assets/images/projects/listvaults/listvault_logo.webp"
+                    alt="ListVaults Project"
+                    class="project-image"
+                    loading="lazy"
+                  />
+                  <section class="project-content">
+                    <h3>ListVaults - Watchlist Tracker</h3>
+                    <p>
+                      A website for managing and tracking watch lists (e.g.,
+                      anime, drama) with dedicated "to-watch" and "watched"
+                      sections.
+                    </p>
+                    <ul class="project-tags">
+                      <li class="framework">Next.js</li>
+                      <li class="language">JavaScript</li>
+                      <li class="database">Firebase</li>
+                    </ul>
+                    <a href="projects/listvaults.html" class="project-link"
+                      >Learn More &rarr;</a
+                    >
+                  </section>
+                </article>
+              </li>
+              <!-- PlanMyTrip Project -->
+              <li>
+                <article class="project-card">
+                  <img
+                    src="assets/images/projects/planmytrip/planmytrip_logo.webp"
+                    alt="PlanMyTrip Project"
+                    class="project-image"
+                    loading="lazy"
+                  />
+                  <section class="project-content">
+                    <h3>PlanMyTrip - AI Chatbot</h3>
+                    <p>
+                      An AI-powered platform to simplify travel planning with
+                      tailored recommendations, personalized itineraries,
+                      packing checklists, and essential travel tips.
+                    </p>
+                    <ul class="project-tags">
+                      <li class="framework">React</li>
+                      <li class="framework">Next.js</li>
+                      <li class="tech featured">Groq</li>
+                    </ul>
+                    <a href="projects/planmytrip.html" class="project-link"
+                      >Learn More &rarr;</a
+                    >
+                  </section>
+                </article>
+              </li>
+              <!-- Personal Website Project -->
+              <li>
+                <article class="project-card">
+                  <img
+                    src="assets/images/general/logo.webp"
+                    alt="Personal Website Project"
+                    class="project-image"
+                    loading="lazy"
+                  />
+                  <section class="project-content">
+                    <h3>Personal Landing Page</h3>
+                    <p>
+                      Created a personal landing page to catalog all of my
+                      projects and professional experiences, hosted on GitHub
+                      Pages.
+                    </p>
+                    <ul class="project-tags">
+                      <li class="language">HTML</li>
+                      <li class="language">CSS</li>
+                    </ul>
+                    <a href="projects/landing.html" class="project-link"
+                      >Learn More &rarr;</a
+                    >
+                  </section>
+                </article>
+              </li>
+              <!-- OrderEase Project -->
+              <li>
+                <article class="project-card">
+                  <img
+                    src="assets/images/experience/frugal-hub/frugalpic03.webp"
+                    alt="OrderEase Project"
+                    class="project-image"
+                    loading="lazy"
+                  />
+                  <section class="project-content">
+                    <h3>OrderEase Mobile App</h3>
+                    <p>
+                      Developed an app that allows users to order food from a
+                      restaurant menu and track the order status and then
+                      generate corresponding ordering sentences.
+                    </p>
+                    <ul class="project-tags">
+                      <li class="framework featured">Flutter</li>
+                      <li class="tool">Figma</li>
+                      <li class="database">Firebase</li>
+                      <li class="language">Dart</li>
+                    </ul>
+                    <a href="projects/orderease.html" class="project-link"
+                      >Learn More &rarr;</a
+                    >
+                  </section>
+                </article>
+              </li>
+              <!-- Movable Hand Project -->
+              <li>
+                <article class="project-card">
+                  <img
+                    src="assets/images/projects/movable-hand/hand0.webp"
+                    alt="Movable Hand Project"
+                    class="project-image"
+                    loading="lazy"
+                  />
+                  <section class="project-content">
+                    <h3>Movable Hand</h3>
+                    <p>
+                      Created a hand that is designed to move in like a real
+                      human hand and help grabbing small things like phones,
+                      rings, or car keys.
+                    </p>
+                    <ul class="project-tags">
+                      <li class="tool featured">Fusion360</li>
+                      <li class="tool">3D Printing</li>
+                    </ul>
+                    <a href="projects/movable-hand.html" class="project-link"
+                      >Learn More &rarr;</a
+                    >
+                  </section>
+                </article>
+              </li>
+              <!-- Rube-Goldberg Machine Project -->
+              <li>
+                <article class="project-card">
+                  <img
+                    src="assets/images/projects/rube-goldberg/rube2.webp"
+                    alt="Rube-Goldberg Machine Project"
+                    class="project-image"
+                    loading="lazy"
+                  />
+                  <section class="project-content">
+                    <h3>Rube-Goldberg Machine</h3>
+                    <p>
+                      Designed 6 versions of a Rube-Goldberg machine using
+                      different sensors and microcontrollers, with a final
+                      design requiring only a single push-button interface.
+                    </p>
+                    <ul class="project-tags">
+                      <li class="tech featured">Arduino</li>
+                      <li class="tool">Hardware Design</li>
+                    </ul>
+                    <a href="projects/rube-goldberg.html" class="project-link"
+                      >Learn More &rarr;</a
+                    >
+                  </section>
+                </article>
+              </li>
+              <!-- Arduino Car Project -->
+              <li>
+                <article class="project-card">
+                  <img
+                    src="assets/images/projects/joystickcar/car2.webp"
+                    alt="Arduino Car Project"
+                    class="project-image"
+                    loading="lazy"
+                  />
+                  <section class="project-content">
+                    <h3>Joystick Controlled Car</h3>
+                    <p>
+                      A 3D-printed, Arduino-powered race car controlled via a
+                      joystick. Led a team in design, 3D printing, wiring,
+                      soldering, and programming.
+                    </p>
+                    <ul class="project-tags">
+                      <li class="tech featured">Arduino</li>
+                      <li class="language">C</li>
+                      <li class="tool">Hardware</li>
+                      <li class="tool">3D Printing</li>
+                    </ul>
+                    <a href="projects/joystickcar.html" class="project-link"
+                      >Learn More &rarr;</a
+                    >
+                  </section>
+                </article>
+              </li>
+            </ul>
+          </details>
         </section>
       </section>
 
@@ -456,10 +576,13 @@
                 <h3>ML Team Member</h3>
                 <p class="timeline-company">Triton Droids, UC San Diego</p>
                 <p>
-                  Building a humanoid robot from the ground up alongside a
-                  hardware team. Developing a MuJoCo falling policy with
-                  imitation learning and RL, plus a Franka Panda arm
-                  pick-and-place pipeline in simulation.
+                  ML team on a club-built humanoid. Training a cross-court
+                  ping-pong forehand for the Unitree G1 in IsaacLab (42% in
+                  the target zone in MuJoCo). Trained one mjlab policy that
+                  chains kick, dodge, and punch for the club's URKL entry on
+                  EngineAI's T800 (qualified among the top 32 teams). Also
+                  working on a MuJoCo falling policy and a Panda pick-and-place
+                  pipeline in simulation.
                 </p>
                 <a href="experience/triton-droids.html" class="timeline-link"
                   >Learn More &rarr;</a
@@ -473,10 +596,11 @@
                 <h3>Software Engineer Intern</h3>
                 <p class="timeline-company">Ubitus</p>
                 <p>
-                  Developed MCP tools for LLMs that utilize vector databases
-                  like Milvus with L2 distance metrics for relevant data
-                  retrieval and implemented reranking techniques to improve data
-                  precision for database searching applications.
+                  Built an MCP retrieval server for the company LLM over
+                  Milvus; a cross-encoder re-ranker raised internal eval F1
+                  from 58% (L2 baseline) to 77.8%. Built PromptGuard to harden
+                  5 internal LLM products against prompt injection. Operated a
+                  Unitree G1 humanoid in live demos at AI WAVE 2025.
                 </p>
                 <a href="experience/ubitus.html" class="timeline-link"
                   >Learn More &rarr;</a
@@ -485,7 +609,7 @@
             </li>
             <li class="timeline-item">
               <span class="timeline-dot"></span>
-              <p class="timeline-date">September 2024 - May 2025</p>
+              <p class="timeline-date">September 2024 - June 2025</p>
               <article class="timeline-content">
                 <h3>Computer Vision Research</h3>
                 <p class="timeline-company">
@@ -495,8 +619,8 @@
                 <p>
                   Contributed to advancing 3D scene understanding and synthesis
                   research at UCSD by integrating large language models with
-                  tool like Blender to optimize lighting placement. Develop
-                  domain-specific languages for scene rendering, and create
+                  tools like Blender to optimize lighting placement. Developed
+                  domain-specific languages for scene rendering and created
                   automated pipelines for spatial reasoning and scene evaluation
                   tasks.
                 </p>
@@ -545,7 +669,7 @@
                   Guided robotics students through robot assembly, coding with
                   Scratch, 3D modeling and printing with TinkerCAD, and
                   introducing them to AI technologies like ChatGPT and AI image
-                  generators to provide comprehensive hands-on STEM education.
+                  generators to provide hands-on STEM education.
                 </p>
                 <a href="experience/magikid.html" class="timeline-link"
                   >Learn More &rarr;</a
@@ -557,7 +681,7 @@
               <p class="timeline-date">June 2023 - August 2023</p>
               <article class="timeline-content">
                 <h3>Software Developer Intern</h3>
-                <p class="timeline-company">Frugal Innovation Hub.</p>
+                <p class="timeline-company">Frugal Innovation Hub</p>
                 <p>
                   Built a mobile food ordering simulator app using Flutter to
                   enhance user interface design and order management skills.
@@ -608,7 +732,7 @@
                 </div>
                 <h3>EMPOWER Scholar</h3>
                 <p class="honor-org">
-                  UC San Diego — NSF S-STEM Program (2024 – 2026)
+                  UC San Diego, NSF S-STEM Program (2024 - 2026)
                 </p>
                 <p>
                   Selected for a competitive NSF-funded program supporting
@@ -622,7 +746,7 @@
               <article class="honor-card">
                 <h3>Alan Turing Memorial Scholar</h3>
                 <p class="honor-org">
-                  Center for Networked Systems, UC San Diego (2025 – 2026)
+                  Center for Networked Systems, UC San Diego (2025 - 2026)
                 </p>
                 <p>
                   Awarded a competitive endowed scholarship, combining the
@@ -652,14 +776,15 @@
                 </div>
                 <h3>Triton Droids, UC San Diego</h3>
                 <p class="honor-org">
-                  ML Team Member (February 2026 – Present)
+                  ML Team Member (February 2026 - Present)
                 </p>
                 <p>
-                  Building a humanoid robot from the ground up. On the ML
-                  team writing control policies — a MuJoCo falling policy
-                  and a Panda arm pick-and-place pipeline — alongside a
-                  CSE 145 wearable-IMU teleoperation project with the same
-                  club.
+                  ML team member on a club-built humanoid. Projects: a
+                  ping-pong forehand for the Unitree G1, multi-motion
+                  tracking for the club's URKL entry on EngineAI's T800, a
+                  MuJoCo falling policy, a Panda
+                  pick-and-place pipeline, and the CSE 145 wearable-IMU
+                  teleoperation project.
                 </p>
                 <a
                   href="experience/triton-droids.html"
@@ -684,7 +809,7 @@
                 </div>
                 <h3>Chinese Engineering Society, UC San Diego</h3>
                 <p class="honor-org">
-                  Career Development Program Team Officer (November 2024 –
+                  Career Development Program Team Officer (November 2024 -
                   Present)
                 </p>
                 <p>
@@ -708,7 +833,8 @@
         <section class="container">
           <h2>Get In Touch</h2>
           <p>
-            I'm currently seeking new opportunities. Feel free to reach out!
+            I'm looking for full-time robot learning and robotics software
+            roles starting Summer 2027. Email is the fastest way to reach me.
           </p>
           <a href="mailto:fongyu903@gmail.com" class="cta-button">Say Hello</a>
           <ul class="social-links">
@@ -732,7 +858,7 @@
             </li>
             <li>
               <a
-                href="https://drive.google.com/file/d/1QwXjZAsUs_i0DefNahq9nvKLk7u1oYnR/view?usp=sharing"
+                href="https://drive.google.com/file/d/1_vHFwatwEMVyo5gf2-5Hiuq1J9DGMkBI/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="Resume"

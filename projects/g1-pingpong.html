@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Unitree G1 Ping-Pong Forehand - An RL whole-body policy that returns cross-court forehands into four target zones in simulation, built with Triton Droids on the HOPE platform." />
+        <title>Unitree G1 Ping-Pong Forehand | Fong-Yu (Yang) Lin</title>
+        <link rel="icon" type="image/jpeg" href="../assets/images/general/logo.webp" />
+        <link rel="stylesheet" href="../style.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <header class="site-header">
+            <section class="container">
+                <a href="../index.html" class="logo">Fong-Yu Lin</a>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <ul>
+                        <li><a href="../index.html#about">About</a></li>
+                        <li><a href="../index.html#projects">Projects</a></li>
+                        <li>
+                            <a href="../index.html#experience">Experience</a>
+                        </li>
+                        <li><a href="../index.html#contact">Contact</a></li>
+                    </ul>
+                </nav>
+                <button id="nav-toggle" class="nav-toggle" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
+                <button id="theme-toggle" class="theme-toggle" aria-label="Switch to light mode">☀️</button>
+            </section>
+        </header>
+
+        <main>
+            <header class="project-hero">
+                <section class="container">
+                    <h1>Unitree G1 Ping-Pong Forehand</h1>
+                    <p>
+                        A Unitree G1 humanoid that returns a cross-court
+                        forehand into one of four target zones, built with
+                        Triton Droids on top of HOPE, the open humanoid
+                        table-tennis platform. A ball planner decides where,
+                        when, and how fast the racket must be, and a
+                        reinforcement-learned whole-body policy gets it there
+                        while imitating a reference swing. Simulation only for
+                        now; the robot has not arrived.
+                    </p>
+                </section>
+            </header>
+
+            <article class="project-page-content">
+                <section class="container">
+                    <!-- Demo Section -->
+                    <section id="gallery" class="project-section">
+                        <h2>Demo</h2>
+                        <section class="exhibition-media">
+                            <article class="exhibition-video">
+                                <h4>Best policy, MuJoCo evaluation</h4>
+                                <video
+                                    controls
+                                    muted
+                                    playsinline
+                                    preload="metadata"
+                                    poster="../assets/images/projects/g1-pingpong/forehand_eval.webp"
+                                    class="demo-video"
+                                >
+                                    <source
+                                        src="../assets/videos/g1_pingpong_forehand.mp4"
+                                        type="video/mp4"
+                                    />
+                                </video>
+                                <p class="media-caption">
+                                    Policy trained in IsaacLab, evaluated in
+                                    MuJoCo on held-out feeds with a real ball
+                                    plant. The green box is the target zone.
+                                </p>
+                            </article>
+                        </section>
+                    </section>
+
+                    <!-- Task Section -->
+                    <section class="project-section">
+                        <h2>The task</h2>
+                        <p>
+                            The feed comes diagonally from the opponent's
+                            right. The robot has to strike the ball at the
+                            apex after it bounces (incoming vertical speed
+                            under 0.3 m/s), clear the net, and land the return
+                            in one of four zones on the opponent's right: open
+                            court, or one of three zones lined up along the end
+                            line. One policy covers all four zones; the planner
+                            picks the zone and solves the racket velocity that
+                            sends the ball there.
+                        </p>
+                    </section>
+
+                    <!-- What I Built Section -->
+                    <section class="project-section">
+                        <h2>What I built</h2>
+                        <section class="features-grid">
+                            <article>
+                                <h3>1. Apex, cross-court question bank</h3>
+                                <ul>
+                                    <li>
+                                        Replaced the inherited Agibot A3
+                                        training questions, which struck
+                                        falling balls across the full table,
+                                        with G1-specific apex strikes aimed at
+                                        the four zones
+                                    </li>
+                                    <li>
+                                        A success metric that follows the
+                                        club's rally rule; HOPE's analytic
+                                        success rate never clears the net
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>2. Training at rally pace</h3>
+                                <ul>
+                                    <li>
+                                        Late swing entry, timing jitter on
+                                        the virtual strike, and a faster-feed
+                                        bank so the policy trains at real rally
+                                        cadence
+                                    </li>
+                                    <li>
+                                        A fist-grip robot model with the
+                                        racket across the closed hand, since
+                                        the stock G1 hand cannot hold a handle
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>3. MuJoCo evaluation</h3>
+                                <ul>
+                                    <li>
+                                        Per-zone sim-to-sim evaluator with a
+                                        real ball plant, rally-pace mode,
+                                        shove tests, and a camera model for a
+                                        perception study
+                                    </li>
+                                    <li>
+                                        Picks checkpoints by this test;
+                                        neighbouring checkpoints can differ a
+                                        lot
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>4. Timing and aim fixes</h3>
+                                <ul>
+                                    <li>
+                                        Traced early strikes to the deploy
+                                        clock being one 20 ms tick short and
+                                        added a deadline-based clock
+                                    </li>
+                                    <li>
+                                        An aim offset in the planner for
+                                        returns that landed 30&ndash;60 cm
+                                        short, which tripled in-zone landings
+                                        (12% &rarr; 35%)
+                                    </li>
+                                </ul>
+                            </article>
+                            <article>
+                                <h3>5. Cluster training</h3>
+                                <ul>
+                                    <li>
+                                        Container-free IsaacLab jobs on the
+                                        UCSD SDSC cluster, with resume that
+                                        keeps curriculum ramps going and
+                                        guards against known-broken GPUs
+                                    </li>
+                                    <li>
+                                        A video &rarr; G1 reference clip
+                                        pipeline (GVHMR + GMR), as in HITTER
+                                    </li>
+                                </ul>
+                            </article>
+                        </section>
+                    </section>
+
+                    <!-- Results Section -->
+                    <section class="project-section">
+                        <h2>Results</h2>
+                        <p>
+                            Best policy so far (fist grip, MuJoCo, deploy
+                            defaults, 240 held-out balls):
+                        </p>
+                        <div class="table-scroll">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>No aim offset</th>
+                                    <th>With aim offset</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Ball hit</td>
+                                    <td>100%</td>
+                                    <td>&ndash;</td>
+                                </tr>
+                                <tr>
+                                    <td>Struck at the apex</td>
+                                    <td>~95%</td>
+                                    <td>&ndash;</td>
+                                </tr>
+                                <tr>
+                                    <td>Legal return</td>
+                                    <td>~86%</td>
+                                    <td>80%</td>
+                                </tr>
+                                <tr>
+                                    <td>Lands in the target zone</td>
+                                    <td>~26%</td>
+                                    <td><strong>42%</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <p>
+                            Balance: no falls without shoves or with shoves up
+                            to 0.5 m/s, and 5% at 1.0 m/s (down from 26% for
+                            the earlier grip).
+                        </p>
+                    </section>
+
+                    <!-- Findings Section -->
+                    <section class="project-section">
+                        <h2>Findings</h2>
+                        <ul>
+                            <li>
+                                <strong>Spin matters more than cameras.</strong>
+                                In simulation, perfect ball tracking without
+                                spin drops legal returns from 61% to 10%. With
+                                spin known, mocap-level and iPhone-level
+                                tracking score 56% and 54%. So the plan is to
+                                estimate spin, not buy better cameras yet.
+                            </li>
+                            <li>
+                                <strong>Fix aim in the planner, not the racket
+                                command.</strong> Re-commanding the racket for
+                                its velocity bias made results worse, because
+                                the policy does not follow out-of-distribution
+                                commands.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Status Section -->
+                    <section class="project-section">
+                        <h2>Status and next steps</h2>
+                        <ul>
+                            <li>
+                                Remaining misses are mostly scatter (~20 cm)
+                                rather than bias.
+                            </li>
+                            <li>
+                                A balance-first run (lower stance, centre of
+                                mass over the feet, bigger shoves) is ready to
+                                train.
+                            </li>
+                            <li>
+                                Before hardware: a 3D-printed fist holder,
+                                measuring the real racket, refitting ball
+                                physics on our table, and a G1 deploy runner.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <!-- Credit Section -->
+                    <section class="project-section">
+                        <h2>Credit</h2>
+                        <p>
+                            Built on HOPE (Hitch Interactive and UC Berkeley's
+                            ROAR), which follows HITTER. A teammate's G1 port
+                            supplied the robot model with a racket, the scaled
+                            training recipe, and MuJoCo plant parity; my
+                            forehand work branches from it.
+                        </p>
+                    </section>
+
+                    <!-- Tech Stack Section -->
+                    <section class="project-section">
+                        <h2>Technology Stack</h2>
+                        <ul class="tech-stack">
+                            <li>Python</li>
+                            <li>PyTorch</li>
+                            <li>IsaacLab</li>
+                            <li>MuJoCo</li>
+                            <li>PPO</li>
+                            <li>ONNX</li>
+                            <li>Slurm</li>
+                            <li>Unitree G1</li>
+                        </ul>
+                    </section>
+
+                    <a href="../index.html#projects" class="back-link"
+                        >&larr; Back to All Projects</a
+                    >
+                </section>
+            </article>
+        </main>
+
+        <footer class="site-footer">
+            <section class="container footer-container">
+                <p>
+                    &copy; <span id="year"></span> Fong-Yu (Yang) Lin. All
+                    Rights Reserved.
+                </p>
+                <p id="location-time"></p>
+            </section>
+        </footer>
+
+        <script src="../script.js" defer></script>
+    </body>
+</html>

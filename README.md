@@ -1,6 +1,6 @@
 # Portfolio — Fong-Yu (Yang) Lin
 
-A responsive personal portfolio website showcasing my software development projects and professional experience.
+A responsive personal portfolio website showcasing my robot learning and software projects and professional experience.
 
 🔗 **Live:** [yanglin14.github.io/portfolio](https://yanglin14.github.io/portfolio/)
 
@@ -17,7 +17,7 @@ A responsive personal portfolio website showcasing my software development proje
 ├── index.html          # Main portfolio page
 ├── style.css           # Global styles & theming
 ├── script.js           # Interactions & live clock
-├── projects/           # Individual project detail pages (11)
+├── projects/           # Individual project detail pages (15)
 ├── experience/         # Individual experience detail pages (9)
 ├── assets/
 │   ├── images/         # Project screenshots & photos
@@ -27,12 +27,15 @@ A responsive personal portfolio website showcasing my software development proje
 
 ## Featured Projects
 
-- **NewLedger** — Cross-platform expense tracker (Flutter, Firebase, ML Kit)
-- **Love Ability Gym** — Emotional intelligence training app (React 19, Vite, Supabase)
-- **Flashy** — AI-powered flashcard platform (Next.js, GroqAI)
-- **PlanMyTrip** — AI travel planning chatbot (React, Next.js, Groq AI)
-- **ListVaults** — Watchlist tracker (Next.js, Firebase)
-- And more...
+- **Unitree G1 Ping-Pong Forehand**: RL whole-body cross-court forehand for the Unitree G1, with Triton Droids (IsaacLab, MuJoCo, PPO)
+- **URKL T800 Multi-Motion Tracking**: one policy that chains kick, dodge, and punch on EngineAI's T800 (mjlab, MuJoCo, PPO)
+- **Humanoid Robot Teleoperation**: wearable IMU teleoperation for a custom 10-DOF humanoid, CSE 145 (IsaacLab, MuJoCo, Holosoma)
+- **LLM Spatial Grounding (Talk-to-Robot)**: where LLMs fail at turning language into robot goals (MuJoCo, SAC+HER, Gemini)
+- **PromptGuard**: prompt-injection testing and system-prompt hardening for LLM products (Python)
+- **Love Ability Gym**: emotional intelligence training app (React, Vite, Supabase)
+- **NewLedger**: cross-platform expense tracker (Flutter, Firebase, ML Kit)
+- **Flashy**: AI flashcard platform (Next.js, Groq)
+- And more under "Other Projects" on the site
 
 ## Development
 

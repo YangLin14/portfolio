@@ -36,13 +36,14 @@
         <main>
             <header class="project-hero">
                 <section class="container">
-                    <h1>Humanoid Robot Teleoperation 🦾</h1>
+                    <h1>Humanoid Robot Teleoperation</h1>
                     <p>
                         A low-cost (~$180 in hardware) wearable IMU pipeline
                         that streams lower-body motion at 100 Hz with
                         sub-50ms latency, retargets it onto a custom humanoid,
-                        and trains a PPO motion-tracking policy validated in
-                        IsaacLab and MuJoCo.
+                        and feeds a PPO motion-tracking environment in
+                        IsaacLab, with a handoff to MuJoCo for higher-fidelity
+                        checks.
                     </p>
                 </section>
             </header>
@@ -62,7 +63,7 @@
                             develops a low-cost lower-body humanoid teleoperation
                             pipeline using wearable IMUs, human pose
                             reconstruction, retargeting, and
-                            simulation-based motion tracking — instead of
+                            simulation-based motion tracking, without
                             relying on expensive motion capture hardware.
                             Five BNO085 IMUs paired with ESP32-S3
                             microcontrollers stream fused orientation
@@ -73,8 +74,9 @@
                             retargets it onto a custom humanoid robot model
                             (<code>ch_robot</code>), and trains a PPO-based
                             motion-tracking policy with residual PD control in
-                            IsaacLab, validated in MuJoCo — all for
-                            approximately $180 in hardware cost.
+                            IsaacLab, with an IsaacLab-to-MuJoCo handoff for
+                            validation, all for approximately $180 in hardware
+                            cost.
                             <br /><br />
                             <strong
                                 ><a
@@ -101,23 +103,23 @@
                         </p>
                     </section>
 
-                    <!-- System Architecture Section -->
+                    <!-- System Design Section -->
                     <section class="project-section">
-                        <h2>System Architecture</h2>
+                        <h2>System Design</h2>
                         <section class="features-grid">
                             <article>
                                 <h3>1. Wearable IMUs</h3>
                                 <ul>
                                     <li>
-                                        🩻 5× BNO085 IMUs + ESP32-S3 boards,
+                                        5× BNO085 IMUs + ESP32-S3 boards,
                                         strapped to pelvis, thighs, and shanks
                                     </li>
                                     <li>
-                                        📶 Fused orientation quaternions
+                                        Fused orientation quaternions
                                         streamed over Wi-Fi/UDP at 100 Hz
                                     </li>
                                     <li>
-                                        ⚡ Sub-50ms end-to-end latency, ~$180
+                                        Sub-50ms end-to-end latency, ~$180
                                         total hardware cost
                                     </li>
                                 </ul>
@@ -126,16 +128,16 @@
                                 <h3>2. Pose Estimation</h3>
                                 <ul>
                                     <li>
-                                        🧮 Neutral-pose calibration and SLERP
+                                        Neutral-pose calibration and SLERP
                                         smoothing of IMU streams
                                     </li>
                                     <li>
-                                        🦴 Forward-kinematics reconstruction of
+                                        Forward-kinematics reconstruction of
                                         a 9-keypoint lower-body skeleton from
                                         5 physical IMUs
                                     </li>
                                     <li>
-                                        📷 MediaPipe + FastAPI RGBD camera
+                                        MediaPipe + FastAPI RGBD camera
                                         baseline for comparison/fallback
                                     </li>
                                 </ul>
@@ -144,12 +146,12 @@
                                 <h3>3. Retargeting</h3>
                                 <ul>
                                     <li>
-                                        🔧 Adapted the Holosoma pipeline to a
+                                        Adapted the Holosoma pipeline to a
                                         custom 10-DOF humanoid model
                                         (<code>ch_robot</code>)
                                     </li>
                                     <li>
-                                        🪢 Maps the human skeleton into robot
+                                        Maps the human skeleton into robot
                                         generalized coordinates (URDF-aligned)
                                     </li>
                                 </ul>
@@ -158,12 +160,12 @@
                                 <h3>4. RL Training</h3>
                                 <ul>
                                     <li>
-                                        🏋️ PPO motion-tracking policy trained
-                                        in IsaacLab on retargeted reference
-                                        motion
+                                        PPO motion-tracking environment in
+                                        IsaacLab, driven by retargeted
+                                        reference motion
                                     </li>
                                     <li>
-                                        🎛️ Residual PD control: retargeted
+                                        Residual PD control: retargeted
                                         motion sets nominal joint targets, the
                                         policy learns bounded corrections
                                     </li>
@@ -173,11 +175,11 @@
                                 <h3>5. Sim2Sim Validation</h3>
                                 <ul>
                                     <li>
-                                        🧪 Trained policy re-evaluated in
-                                        MuJoCo for higher-fidelity validation
+                                        IsaacLab-to-MuJoCo handoff for
+                                        higher-fidelity checks
                                     </li>
                                     <li>
-                                        🛑 Real robot deployment intentionally
+                                        Real robot deployment intentionally
                                         deferred until this validation step is
                                         solid
                                     </li>
@@ -211,15 +213,20 @@
                     <section class="project-section">
                         <h2>My Role</h2>
                         <p>
-                            I worked on the ML side alongside the embedded
-                            team. My contributions included high-level
-                            project spec clarification and workflow planning,
-                            researching and designing the motion-tracking
-                            reward and policy, handling Sim2Sim evaluation
-                            from IsaacLab to MuJoCo, building the online
-                            retargeting algorithm for live streamed IMU data,
-                            and managing the data pipeline used for policy
-                            training.
+                            I was on the ML side of a 6-person team. I built
+                            the live retargeting stage that turns streamed IMU
+                            orientations into joint targets for our 10-DOF
+                            humanoid, extended Holosoma's converter so
+                            retargeted motion could feed IsaacLab training
+                            (custom joint order, DOF-generic slicing, FPS
+                            parsing, headless mode) and validated it on OMOMO
+                            motion data, wrote the reward and policy design for
+                            the motion-tracking environment, and built the
+                            IsaacLab-to-MuJoCo handoff. Team lead Darin Djapri
+                            ran the training; Cindy Chen adapted the offline
+                            Holosoma pipeline and the RealSense baseline; Neal
+                            Jian, Tauhid Malik, and Parth Trivedi built the
+                            wearable hardware, firmware, and streaming.
                         </p>
                     </section>
 
@@ -234,8 +241,8 @@
                             clip export, human-to-robot retargeting, and
                             simulation-based motion tracking. Real robot
                             deployment and full-body teleoperation were
-                            intentionally deferred as future work — they
-                            require more robust root-translation estimation,
+                            intentionally deferred as future work. They
+                            require better root-translation estimation,
                             contact-aware retargeting, and additional safety
                             validation before commanding physical hardware.
                         </p>

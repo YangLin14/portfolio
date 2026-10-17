@@ -486,7 +486,7 @@ ol {
 /* ------------------- */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: 2rem;
 }
 
@@ -514,6 +514,13 @@ ol {
     object-fit: cover;
 }
 
+.project-image-placeholder-text {
+    font-size: 1.75rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text-secondary);
+}
+
 .project-image-placeholder {
     display: flex;
     align-items: center;
@@ -524,6 +531,52 @@ ol {
         var(--bg-medium) 0%,
         var(--border-color) 100%
     );
+}
+
+/* Collapsed "Other Projects" group */
+.other-projects {
+    margin-top: 3rem;
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 1rem 1.5rem;
+    background-color: var(--bg-medium);
+}
+
+.other-projects > summary {
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    list-style: none;
+}
+
+.other-projects > summary::marker,
+.other-projects > summary::-webkit-details-marker {
+    display: none;
+}
+
+.other-projects > summary::after {
+    content: " +";
+    color: var(--accent-color);
+}
+
+.other-projects[open] > summary::after {
+    content: " \2212";
+}
+
+.other-projects > summary:focus-visible {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 4px;
+}
+
+.other-projects .projects-grid {
+    margin-top: 2rem;
+}
+
+@media (max-width: 480px) {
+    .other-projects {
+        padding: 1rem;
+    }
 }
 
 .project-content {
@@ -1608,6 +1661,79 @@ code {
     color: var(--accent-color, #667eea);
     margin-top: 0;
     margin-bottom: 1rem;
+}
+
+/* Square sim rollout videos */
+.demo-video.demo-video-square {
+    max-width: 420px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Results table */
+.table-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+.results-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0 1rem;
+    font-size: 0.95rem;
+}
+
+.results-table th,
+.results-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.results-table thead th {
+    color: var(--accent-color);
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.results-table tbody th {
+    font-weight: 700;
+    color: var(--text-primary);
+}
+
+.results-table tbody tr:last-child th,
+.results-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.table-note {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 480px) {
+    .results-table {
+        font-size: 0.85rem;
+    }
+
+    .results-table th,
+    .results-table td {
+        padding: 0.5rem;
+    }
+}
+
+/* Full-width figure on project pages */
+.project-figure {
+    margin: 1.5rem 0 0;
+}
+
+.project-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    background: #fff;
 }
 
 /* Skills Section */

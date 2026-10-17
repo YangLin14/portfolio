@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="URKL T800 Multi-Motion Tracking - Training infrastructure for chaining combat skills inside a single mjlab tracking policy on EngineAI's T800 humanoid, built for Triton Droids." />
+        <meta name="description" content="URKL T800 Multi-Motion Tracking - One mjlab tracking policy that chains kick, dodge, and punch on EngineAI's T800 humanoid, with live move selection, built for Triton Droids." />
         <title>URKL T800 Multi-Motion Tracking | Fong-Yu (Yang) Lin</title>
         <link rel="icon" type="image/jpeg" href="../assets/images/general/logo.webp" />
         <link rel="stylesheet" href="../style.css" />
@@ -41,17 +41,81 @@
                         Triton Droids entered URKL (Ultimate Robot Knock-out
                         Legend), EngineAI's humanoid combat league where every
                         team uses the same T800 humanoid. Our team passed the
-                        initial challenge round. The project stopped before the
-                        physical stage in China. I built the training
-                        infrastructure for chaining combat skills inside a
-                        single tracking policy in mjlab.
+                        initial challenge round. I built the training pipeline
+                        in mjlab that lets one tracking policy chain combat
+                        moves (kick, dodge, punch) in any order, trained it on
+                        the UCSD SDSC cluster, and added a viewer panel for
+                        picking the next move live. Simulation only.
                     </p>
                 </section>
             </header>
 
             <article class="project-page-content">
                 <section class="container">
-                    <!-- TODO(Yang): add image -->
+                    <!-- Demo Section -->
+                    <section id="gallery" class="project-section">
+                        <h2>Demos</h2>
+                        <section class="exhibition-media">
+                            <article class="exhibition-video">
+                                <h4>Fixed combo: kick &rarr; dodge &rarr; punch</h4>
+                                <video
+                                    controls
+                                    muted
+                                    playsinline
+                                    preload="metadata"
+                                    poster="../assets/images/projects/urkl-t800/kick_dodge_punch.webp"
+                                    class="demo-video"
+                                >
+                                    <source
+                                        src="../assets/videos/urkl_kick_dodge_punch.mp4"
+                                        type="video/mp4"
+                                    />
+                                </video>
+                                <p class="media-caption">
+                                    The solid robot is the physics simulation
+                                    driven by the policy. The faint ghost is
+                                    the reference motion it is tracking.
+                                </p>
+                            </article>
+                            <article class="exhibition-video">
+                                <h4>Choosing moves live in the viewer</h4>
+                                <video
+                                    controls
+                                    muted
+                                    playsinline
+                                    preload="metadata"
+                                    class="demo-video"
+                                >
+                                    <source
+                                        src="../assets/videos/urkl_pick_moves.mp4"
+                                        type="video/mp4"
+                                    />
+                                </video>
+                                <p class="media-caption">
+                                    Moves requested from the Moves panel jump
+                                    the queue. Punch &rarr; punch and punch
+                                    &rarr; dodge were never trained, and the
+                                    robot still stays up.
+                                </p>
+                            </article>
+                        </section>
+                    </section>
+
+                    <!-- How It Works Section -->
+                    <section class="project-section">
+                        <h2>How it works</h2>
+                        <p>
+                            Human motion capture (BVH) is retargeted to T800
+                            joint trajectories, then PPO trains one tracking
+                            policy on 4,096 robots in parallel in mjlab (MuJoCo
+                            Warp). Each step the policy sees the robot's state
+                            and the target frame of the reference motion. It
+                            never sees a move's name, so any move can follow
+                            any other; which clip comes next is decided by the
+                            command term in simulation and by the deploy code
+                            on the robot.
+                        </p>
+                    </section>
 
                     <!-- What I Built Section -->
                     <section class="project-section">
@@ -62,13 +126,13 @@
                                 <ul>
                                     <li>
                                         🧩 Loads several named reference clips
-                                        (kick, dodge, punch) and steps through
-                                        a user-scripted sequence inside one
-                                        policy's training
+                                        (kick, dodge, punch) and feeds them to
+                                        one policy in sequence
                                     </li>
                                     <li>
-                                        🔁 The original single-motion path is
-                                        unchanged
+                                        🔀 During training, 70% of robots
+                                        practice single moves and 30% practice
+                                        chained sequences
                                     </li>
                                 </ul>
                             </article>
@@ -76,25 +140,26 @@
                                 <h3>2. Closest-entry transitions</h3>
                                 <ul>
                                     <li>
-                                        🎯 When one clip ends, the command
-                                        searches the next clip for the frame
-                                        closest to the current state instead of
-                                        restarting at frame 0
+                                        🎯 When one clip ends, the next starts
+                                        from the frame that best matches the
+                                        robot's current pose instead of frame 0
                                     </li>
                                     <li>
-                                        🧪 The policy therefore trains on
-                                        realistic transitions
+                                        🐛 Found and fixed a bug where the
+                                        punch was skipped (see below)
                                     </li>
                                 </ul>
                             </article>
                             <article>
-                                <h3>3. Train, play, and runner support</h3>
+                                <h3>3. Live move picker</h3>
                                 <ul>
                                     <li>
-                                        ⚙️ Multi-motion configs wired through
-                                        the train, play, and runner scripts
+                                        🎮 A request queue in the command plus
+                                        a Moves panel in the viser viewer: one
+                                        button per move, Clear queue, and an
+                                        Autoplay toggle
                                     </li>
-                                    <li>✅ 23 passing tests</li>
+                                    <li>✅ Covered by unit tests</li>
                                 </ul>
                             </article>
                             <article>
@@ -113,30 +178,118 @@
                                 </ul>
                             </article>
                             <article>
-                                <h3>5. GPU training runbooks</h3>
+                                <h3>5. Auto-resuming cluster training</h3>
                                 <ul>
                                     <li>
-                                        📘 Runbooks so teammates could train on
-                                        Colab A100 and the UCSD SDSC cluster
+                                        🖥️ Slurm job that checkpoints every
+                                        250 iterations and resumes by itself
+                                        after crashes, node failures, or
+                                        cancellation
+                                    </li>
+                                    <li>
+                                        📘 Runbooks for SDSC and a Colab smoke
+                                        test, plus a learning-curve plotter
                                     </li>
                                 </ul>
                             </article>
                         </section>
                     </section>
 
+                    <!-- Results Section -->
+                    <section class="project-section">
+                        <h2>Results</h2>
+                        <p>
+                            First full run: 30,000 PPO iterations in 17 h 54
+                            min on one RTX 2080 Ti, with no crashes. Kick,
+                            dodge, and punch are all tracked, and the chained
+                            kick &rarr; dodge &rarr; punch works in playback.
+                        </p>
+                        <div class="table-scroll">
+                        <table class="results-table">
+                            <thead>
+                                <tr>
+                                    <th>Metric</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Mean episode reward (smoothed)</td>
+                                    <td>&minus;1.9</td>
+                                    <td><strong>26.3</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Episode length (steps survived, max 500)</td>
+                                    <td>9</td>
+                                    <td><strong>~450</strong></td>
+                                </tr>
+                                <tr>
+                                    <td>Body position error</td>
+                                    <td>2.08 m</td>
+                                    <td><strong>0.057 m</strong></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <figure class="project-figure">
+                        <img
+                            src="../assets/images/projects/urkl-t800/learning_curves.webp"
+                            alt="Learning curves for the T800 multi-motion run: reward, episode length, and termination causes"
+                            loading="lazy"
+                        />
+                        <figcaption class="media-caption">
+                            Most learning happened in the first ~5,000
+                            iterations, with a jump around 2,000 when the
+                            policy learned to stay balanced through the
+                            hardest part of a motion.
+                        </figcaption>
+                        </figure>
+                    </section>
+
+                    <!-- Bug Section -->
+                    <section class="project-section">
+                        <h2>The skipped punch</h2>
+                        <p>
+                            The first playback showed kick and dodge but no
+                            punch. The punch clip starts and ends in the same
+                            guard stance, so the closest-entry search matched
+                            its last frame (93 of 94) and the punch ran for one
+                            or two control steps before the sequence moved on.
+                            I limited the search to the first half of the next
+                            clip, which leaves the other hand-offs unchanged,
+                            and added a regression test. The bug was also live
+                            during training, so the dodge &rarr; punch hand-off
+                            was never practiced in chained sequences; it still
+                            looks fine in playback because the two poses are
+                            close.
+                        </p>
+                    </section>
+
                     <!-- Status and Limits Section -->
                     <section class="project-section">
                         <h2>Status and limits</h2>
-                        <p>
-                            The pipeline initializes and parses end to end. A
-                            trained multi-skill policy is the next step. The
-                            sequence is scripted by the user; the robot does not
-                            choose skills itself. Closest-entry selection
-                            improves the reference but does not guarantee a
-                            physically stable transition; that has to come from
-                            training.
-                        </p>
-                        <!-- TODO(Yang): add training results, reward curves, and a sim video here once a policy is trained -->
+                        <ul>
+                            <li>
+                                Only one order (kick &rarr; dodge &rarr; punch)
+                                was trained. Other orders work in playback but
+                                were never practiced.
+                            </li>
+                            <li>
+                                There is no idle or guard-stance clip yet, so
+                                the robot falls within a few seconds if asked to
+                                hold still between moves.
+                            </li>
+                            <li>
+                                The largest remaining tracking error is torso
+                                drift across the floor (~0.2 m).
+                            </li>
+                            <li>
+                                Next: an idle clip, training with a random next
+                                move, and the same move queue in the robot-side
+                                deploy loop feeding the ONNX policy.
+                            </li>
+                        </ul>
                     </section>
 
                     <!-- Credit Section -->
@@ -145,8 +298,9 @@
                         <p>
                             Original Kimodo BVH-to-T800 retargeting support was
                             written by a teammate. Retargeting builds on
-                            Holosoma (Amazon FAR), and the training stack is
-                            mjlab.
+                            Holosoma, the training stack is mjlab with rsl_rl's
+                            PPO, and the T800 model and reference tracking code
+                            come from EngineAI.
                         </p>
                     </section>
 
@@ -155,12 +309,14 @@
                         <h2>Technology Stack</h2>
                         <ul class="tech-stack">
                             <li>Python</li>
+                            <li>PyTorch</li>
                             <li>mjlab</li>
-                            <li>MuJoCo</li>
+                            <li>MuJoCo Warp</li>
                             <li>PPO</li>
                             <li>Holosoma</li>
                             <li>BVH</li>
                             <li>Slurm</li>
+                            <li>viser</li>
                         </ul>
                     </section>
 

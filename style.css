@@ -1716,6 +1716,19 @@ code {
     }
 }
 
+/* Full-width figure on project pages */
+.project-figure {
+    margin: 1.5rem 0 0;
+}
+
+.project-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    background: #fff;
+}
+
 /* Skills Section */
 .skills-categories {
     display: grid;

@@ -117,9 +117,10 @@
               problems. In summer 2025 I interned at Ubitus in Taipei, where
               I built an MCP retrieval server for the company LLM and operated
               a Unitree G1 humanoid in live demos at AI WAVE. Since then my
-              work has moved fully into robot learning: motion tracking for
-              EngineAI's T800 with Triton Droids, a wearable IMU teleoperation
-              system, and LLM-to-robot goal grounding. In my free time, I enjoy developing personal
+              work has moved fully into robot learning: a ping-pong forehand
+              for the Unitree G1 and motion tracking for EngineAI's T800 with
+              Triton Droids, a wearable IMU teleoperation system, LLM-to-robot
+              goal grounding, and visual RL on my own SO-101 arm. In my free time, I enjoy developing personal
               projects, playing badminton, and exploring the latest in tech.
             </p>
             <h3>My Tech Stack</h3>
@@ -143,23 +144,49 @@
         <section class="container">
           <h2>Featured Projects</h2>
           <ul class="projects-grid">
+            <!-- Unitree G1 Ping-Pong Forehand -->
+            <li>
+              <article class="project-card">
+                <img
+                  src="assets/images/projects/g1-pingpong/forehand_eval.webp"
+                  alt="Unitree G1 humanoid with a racket at a ping-pong table in MuJoCo"
+                  class="project-image"
+                  loading="lazy"
+                />
+                <section class="project-content">
+                  <h3>Unitree G1 Ping-Pong Forehand</h3>
+                  <p>
+                    RL whole-body policy for a cross-court forehand on the
+                    Unitree G1, built on HOPE with Triton Droids. In MuJoCo:
+                    100% hits, 80% legal returns, 42% in the target zone.
+                  </p>
+                  <ul class="project-tags">
+                    <li class="tech featured">IsaacLab</li>
+                    <li class="tech">MuJoCo</li>
+                    <li class="tech">PPO</li>
+                    <li class="tool">Slurm</li>
+                  </ul>
+                  <a href="projects/g1-pingpong.html" class="project-link"
+                    >Learn More &rarr;</a
+                  >
+                </section>
+              </article>
+            </li>
             <!-- URKL T800 Multi-Motion Tracking -->
             <li>
               <article class="project-card">
-                <!-- TODO(Yang): add image -->
-                <div
-                  class="project-image project-image-placeholder"
-                  aria-hidden="true"
-                >
-                  🥋
-                </div>
+                <img
+                  src="assets/images/projects/urkl-t800/kick_dodge_punch.webp"
+                  alt="EngineAI T800 humanoid tracking a combat motion in the mjlab viewer"
+                  class="project-image"
+                  loading="lazy"
+                />
                 <section class="project-content">
                   <h3>URKL T800 Multi-Motion Tracking</h3>
                   <p>
-                    Multi-motion tracking for EngineAI's T800 humanoid in
-                    mjlab, built for Triton Droids' URKL entry. One policy,
-                    scripted kick, dodge, and punch sequences, closest-frame
-                    transitions.
+                    One mjlab policy that chains kick, dodge, and punch on
+                    EngineAI's T800 humanoid, with moves picked live in the
+                    viewer. Built for Triton Droids' URKL entry.
                   </p>
                   <ul class="project-tags">
                     <li class="tech featured">mjlab</li>
@@ -224,6 +251,34 @@
                     <li class="language">Python</li>
                   </ul>
                   <a href="projects/talk-to-robot.html" class="project-link"
+                    >Learn More &rarr;</a
+                  >
+                </section>
+              </article>
+            </li>
+            <!-- SO-101 Visual RL Arm -->
+            <li>
+              <article class="project-card">
+                <div
+                  class="project-image project-image-placeholder"
+                  aria-hidden="true"
+                >
+                  🦾
+                </div>
+                <section class="project-content">
+                  <h3>SO-101 Visual RL Arm</h3>
+                  <p>
+                    Personal project: an SO-101 leader/follower arm pair set up
+                    for teleop, with Squint visual RL training for sim-to-real
+                    manipulation. In progress.
+                  </p>
+                  <ul class="project-tags">
+                    <li class="tech featured">LeRobot</li>
+                    <li class="tech">ManiSkill</li>
+                    <li class="tech">SAC</li>
+                    <li class="language">Python</li>
+                  </ul>
+                  <a href="projects/so101.html" class="project-link"
                     >Learn More &rarr;</a
                   >
                 </section>
@@ -549,9 +604,11 @@
                 <h3>ML Team Member</h3>
                 <p class="timeline-company">Triton Droids, UC San Diego</p>
                 <p>
-                  ML team on a club-built humanoid. Built multi-motion
-                  tracking infrastructure in mjlab for the club's URKL entry
-                  on EngineAI's T800 (the team passed the initial challenge
+                  ML team on a club-built humanoid. Training a cross-court
+                  ping-pong forehand for the Unitree G1 in IsaacLab (42% in
+                  the target zone in MuJoCo). Trained one mjlab policy that
+                  chains kick, dodge, and punch for the club's URKL entry on
+                  EngineAI's T800 (the team passed the initial challenge
                   round). Also working on a MuJoCo falling policy and a Panda
                   pick-and-place pipeline in simulation.
                 </p>
@@ -750,9 +807,10 @@
                   ML Team Member (February 2026 - Present)
                 </p>
                 <p>
-                  ML team member on a club-built humanoid. Projects:
-                  multi-motion tracking for the club's URKL entry on
-                  EngineAI's T800, a MuJoCo falling policy, a Panda
+                  ML team member on a club-built humanoid. Projects: a
+                  ping-pong forehand for the Unitree G1, multi-motion
+                  tracking for the club's URKL entry on EngineAI's T800, a
+                  MuJoCo falling policy, a Panda
                   pick-and-place pipeline, and the CSE 145 wearable-IMU
                   teleoperation project.
                 </p>

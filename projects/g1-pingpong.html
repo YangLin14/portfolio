@@ -104,14 +104,14 @@
                                 <h3>1. Apex, cross-court question bank</h3>
                                 <ul>
                                     <li>
-                                        🏓 Replaced the inherited Agibot A3
+                                        Replaced the inherited Agibot A3
                                         training questions, which struck
                                         falling balls across the full table,
                                         with G1-specific apex strikes aimed at
                                         the four zones
                                     </li>
                                     <li>
-                                        📏 A success metric that follows the
+                                        A success metric that follows the
                                         club's rally rule; HOPE's analytic
                                         success rate never clears the net
                                     </li>
@@ -121,13 +121,13 @@
                                 <h3>2. Training at rally pace</h3>
                                 <ul>
                                     <li>
-                                        ⏱️ Late swing entry, timing jitter on
+                                        Late swing entry, timing jitter on
                                         the virtual strike, and a faster-feed
                                         bank so the policy trains at real rally
                                         cadence
                                     </li>
                                     <li>
-                                        🤜 A fist-grip robot model with the
+                                        A fist-grip robot model with the
                                         racket across the closed hand, since
                                         the stock G1 hand cannot hold a handle
                                     </li>
@@ -137,13 +137,13 @@
                                 <h3>3. MuJoCo evaluation</h3>
                                 <ul>
                                     <li>
-                                        🔬 Per-zone sim-to-sim evaluator with a
+                                        Per-zone sim-to-sim evaluator with a
                                         real ball plant, rally-pace mode,
                                         shove tests, and a camera model for a
                                         perception study
                                     </li>
                                     <li>
-                                        📊 Picks checkpoints by this test;
+                                        Picks checkpoints by this test;
                                         neighbouring checkpoints can differ a
                                         lot
                                     </li>
@@ -153,12 +153,12 @@
                                 <h3>4. Timing and aim fixes</h3>
                                 <ul>
                                     <li>
-                                        🕒 Traced early strikes to the deploy
+                                        Traced early strikes to the deploy
                                         clock being one 20 ms tick short and
                                         added a deadline-based clock
                                     </li>
                                     <li>
-                                        🎯 An aim offset in the planner for
+                                        An aim offset in the planner for
                                         returns that landed 30&ndash;60 cm
                                         short, which tripled in-zone landings
                                         (12% &rarr; 35%)
@@ -169,13 +169,13 @@
                                 <h3>5. Cluster training</h3>
                                 <ul>
                                     <li>
-                                        🖥️ Container-free IsaacLab jobs on the
+                                        Container-free IsaacLab jobs on the
                                         UCSD SDSC cluster, with resume that
                                         keeps curriculum ramps going and
                                         guards against known-broken GPUs
                                     </li>
                                     <li>
-                                        🎥 A video &rarr; G1 reference clip
+                                        A video &rarr; G1 reference clip
                                         pipeline (GVHMR + GMR), as in HITTER
                                     </li>
                                 </ul>

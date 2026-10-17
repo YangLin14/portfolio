@@ -128,12 +128,12 @@
                                 <h3>1. MultiMotionCommand</h3>
                                 <ul>
                                     <li>
-                                        🧩 Loads several named reference clips
+                                        Loads several named reference clips
                                         (kick, dodge, punch) and feeds them to
                                         one policy in sequence
                                     </li>
                                     <li>
-                                        🔀 During training, 70% of robots
+                                        During training, 70% of robots
                                         practice single moves and 30% practice
                                         chained sequences
                                     </li>
@@ -143,12 +143,12 @@
                                 <h3>2. Closest-entry transitions</h3>
                                 <ul>
                                     <li>
-                                        🎯 When one clip ends, the next starts
+                                        When one clip ends, the next starts
                                         from the frame that best matches the
                                         robot's current pose instead of frame 0
                                     </li>
                                     <li>
-                                        🐛 Found and fixed a bug where the
+                                        Found and fixed a bug where the
                                         punch was skipped (see below)
                                     </li>
                                 </ul>
@@ -157,24 +157,24 @@
                                 <h3>3. Live move picker</h3>
                                 <ul>
                                     <li>
-                                        🎮 A request queue in the command plus
+                                        A request queue in the command plus
                                         a Moves panel in the viser viewer: one
                                         button per move, Clear queue, and an
                                         Autoplay toggle
                                     </li>
-                                    <li>✅ Covered by unit tests</li>
+                                    <li>Covered by unit tests</li>
                                 </ul>
                             </article>
                             <article>
                                 <h3>4. BVH-to-training data path</h3>
                                 <ul>
                                     <li>
-                                        🔧 Fixed the Holosoma retargeting setup
+                                        Fixed the Holosoma retargeting setup
                                         (BVH unit scale, initial-pose
                                         selection, dependencies)
                                     </li>
                                     <li>
-                                        📦 Converted retargeted qpos into
+                                        Converted retargeted qpos into
                                         50 fps mjlab tracking files for kick,
                                         dodge, and warmup motions
                                     </li>
@@ -184,13 +184,13 @@
                                 <h3>5. Auto-resuming cluster training</h3>
                                 <ul>
                                     <li>
-                                        🖥️ Slurm job that checkpoints every
+                                        Slurm job that checkpoints every
                                         250 iterations and resumes by itself
                                         after crashes, node failures, or
                                         cancellation
                                     </li>
                                     <li>
-                                        📘 Runbooks for SDSC and a Colab smoke
+                                        Runbooks for SDSC and a Colab smoke
                                         test, plus a learning-curve plotter
                                     </li>
                                 </ul>

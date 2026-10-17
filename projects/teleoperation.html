@@ -111,15 +111,15 @@
                                 <h3>1. Wearable IMUs</h3>
                                 <ul>
                                     <li>
-                                        🩻 5× BNO085 IMUs + ESP32-S3 boards,
+                                        5× BNO085 IMUs + ESP32-S3 boards,
                                         strapped to pelvis, thighs, and shanks
                                     </li>
                                     <li>
-                                        📶 Fused orientation quaternions
+                                        Fused orientation quaternions
                                         streamed over Wi-Fi/UDP at 100 Hz
                                     </li>
                                     <li>
-                                        ⚡ Sub-50ms end-to-end latency, ~$180
+                                        Sub-50ms end-to-end latency, ~$180
                                         total hardware cost
                                     </li>
                                 </ul>
@@ -128,16 +128,16 @@
                                 <h3>2. Pose Estimation</h3>
                                 <ul>
                                     <li>
-                                        🧮 Neutral-pose calibration and SLERP
+                                        Neutral-pose calibration and SLERP
                                         smoothing of IMU streams
                                     </li>
                                     <li>
-                                        🦴 Forward-kinematics reconstruction of
+                                        Forward-kinematics reconstruction of
                                         a 9-keypoint lower-body skeleton from
                                         5 physical IMUs
                                     </li>
                                     <li>
-                                        📷 MediaPipe + FastAPI RGBD camera
+                                        MediaPipe + FastAPI RGBD camera
                                         baseline for comparison/fallback
                                     </li>
                                 </ul>
@@ -146,12 +146,12 @@
                                 <h3>3. Retargeting</h3>
                                 <ul>
                                     <li>
-                                        🔧 Adapted the Holosoma pipeline to a
+                                        Adapted the Holosoma pipeline to a
                                         custom 10-DOF humanoid model
                                         (<code>ch_robot</code>)
                                     </li>
                                     <li>
-                                        🪢 Maps the human skeleton into robot
+                                        Maps the human skeleton into robot
                                         generalized coordinates (URDF-aligned)
                                     </li>
                                 </ul>
@@ -160,12 +160,12 @@
                                 <h3>4. RL Training</h3>
                                 <ul>
                                     <li>
-                                        🏋️ PPO motion-tracking environment in
+                                        PPO motion-tracking environment in
                                         IsaacLab, driven by retargeted
                                         reference motion
                                     </li>
                                     <li>
-                                        🎛️ Residual PD control: retargeted
+                                        Residual PD control: retargeted
                                         motion sets nominal joint targets, the
                                         policy learns bounded corrections
                                     </li>
@@ -175,11 +175,11 @@
                                 <h3>5. Sim2Sim Validation</h3>
                                 <ul>
                                     <li>
-                                        🧪 IsaacLab-to-MuJoCo handoff for
+                                        IsaacLab-to-MuJoCo handoff for
                                         higher-fidelity checks
                                     </li>
                                     <li>
-                                        🛑 Real robot deployment intentionally
+                                        Real robot deployment intentionally
                                         deferred until this validation step is
                                         solid
                                     </li>

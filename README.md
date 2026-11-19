@@ -17,7 +17,7 @@ A responsive personal portfolio website showcasing my robot learning and softwar
 ├── index.html          # Main portfolio page
 ├── style.css           # Global styles & theming
 ├── script.js           # Interactions & live clock
-├── projects/           # Individual project detail pages (15)
+├── projects/           # Individual project detail pages (16)
 ├── experience/         # Individual experience detail pages (9)
 ├── assets/
 │   ├── images/         # Project screenshots & photos
@@ -31,11 +31,15 @@ A responsive personal portfolio website showcasing my robot learning and softwar
 - **URKL T800 Multi-Motion Tracking**: one policy that chains kick, dodge, and punch on EngineAI's T800 (mjlab, MuJoCo, PPO)
 - **Humanoid Robot Teleoperation**: wearable IMU teleoperation for a custom 10-DOF humanoid, CSE 145 (IsaacLab, MuJoCo, Holosoma)
 - **LLM Spatial Grounding (Talk-to-Robot)**: where LLMs fail at turning language into robot goals (MuJoCo, SAC+HER, Gemini)
-- **PromptGuard**: prompt-injection testing and system-prompt hardening for LLM products (Python)
+- **More Than Words**: Mandarin conversation card game with solo play and real-time multiplayer (Next.js, TypeScript, Supabase)
 - **Love Ability Gym**: emotional intelligence training app (React, Vite, Supabase)
 - **NewLedger**: cross-platform expense tracker (Flutter, Firebase, ML Kit)
+
+## Other Projects
+
+- **PromptGuard**: prompt-injection testing and system-prompt hardening for LLM products (Python)
 - **Flashy**: AI flashcard platform (Next.js, Groq)
-- And more under "Other Projects" on the site
+- More projects are listed under "Other Projects" on the site.
 
 ## Development
 
